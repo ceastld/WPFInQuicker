@@ -1,0 +1,28 @@
+﻿<Window
+    x:Class="WpfApp1.Tools.HintWindow2"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApp1.Tools"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:qk="https://getquicker.net"
+    Title="HintWindow2"
+    AllowsTransparency="True"
+    Background="Transparent"
+    SizeToContent="WidthAndHeight"
+    Topmost="True"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Border Background="#90000000" CornerRadius="10">
+        <StackPanel Orientation="Horizontal">
+            <qk:IconControl
+                Width="32"
+                Height="32"
+                Icon="fa:Light_AlarmPlus" />
+            <TextBlock
+                VerticalAlignment="Center"
+                FontSize="20"
+                Text="{Binding [text]}" />
+        </StackPanel>
+    </Border>
+</Window>
