@@ -140,6 +140,7 @@
     <Compile Include="TagWindow.xaml.cs">
       <DependentUpon>TagWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Test\ClipOperation.cs" />
     <Compile Include="Test\TestClass.cs" />
     <Compile Include="Tools\GlobalSubprogramWindow.xaml.cs">
       <DependentUpon>GlobalSubprogramWindow.xaml</DependentUpon>
