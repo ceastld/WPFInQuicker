@@ -1,15 +1,33 @@
-﻿<Window x:Class="WpfApp1.MainWindow"
-        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
-        xmlns:qk="https://getquicker.net"
-        xmlns:ui="clr-namespace:Quicker.Utilities.UI;assembly=Quicker"
-        mc:Ignorable="d" Topmost="True"
-        Title="MainWindow" Height="450" Width="400">
+﻿<Window
+    x:Class="WpfApp1.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:fa="clr-namespace:FontAwesome5.WPF;assembly=FontAwesomeIconsWpf"
+    xmlns:local="clr-namespace:WpfApp1"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:qk="https://getquicker.net"
+    xmlns:ui="clr-namespace:Quicker.Utilities.UI;assembly=Quicker"
+    Title="MainWindow"
+    Width="400"
+    Height="450"
+    Topmost="True"
+    mc:Ignorable="d">
+    <Window.Resources />
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo>
+            <TaskbarItemInfo.ThumbButtonInfos>
+                <ThumbButtonInfoCollection>
+                    <ThumbButtonInfo CommandTarget="{Binding ElementName=btnTest}" ImageSource="{StaticResource test}" />
+                </ThumbButtonInfoCollection>
+            </TaskbarItemInfo.ThumbButtonInfos>
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
     <Grid>
         <StackPanel>
+            <Button x:Name="btnTest" Click="btnTest_Click">
+                <fa:SvgAwesome Icon="Brands_Accusoft" />
+            </Button>
             <!--<TextBlock>动作编辑器</TextBlock>
             <qk:QuickActionEditor></qk:QuickActionEditor>
             <TextBlock>动作按钮</TextBlock>
@@ -20,12 +38,13 @@
             <TextBlock></TextBlock>
             <qk:ActionUIEditor></qk:ActionUIEditor>
             <qk:CircleActionMenu></qk:CircleActionMenu>-->
-            <qk:IconControl 
-                Height="40"
-                Icon="https://files.getquicker.net/_icons/002098E8563D3F0D68BEC42AC4956CE56DD78B57.svg"></qk:IconControl>
+            <qk:IconControl Height="40" Icon="https://files.getquicker.net/_icons/002098E8563D3F0D68BEC42AC4956CE56DD78B57.svg" />
             <!--<qk:ScreenColorPickerControl></qk:ScreenColorPickerControl>-->
             <!--<qk:SearchBoxControl></qk:SearchBoxControl>-->
-            <Slider Value="20" Maximum="100" Minimum="0"></Slider>
+            <Slider
+                Maximum="100"
+                Minimum="0"
+                Value="20" />
         </StackPanel>
     </Grid>
 </Window>
