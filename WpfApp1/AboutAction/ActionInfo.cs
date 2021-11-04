@@ -71,7 +71,10 @@ namespace WpfApp1.AboutAction
             }
             return true;
         }
-        static void CreatActionItem()
+        /// <summary>
+        /// 生成动作写入剪贴板
+        /// </summary>
+        public static void CreatActionItem()
         {
             var ActionItem = new Quicker.Common.ActionItem()
             {
@@ -85,6 +88,11 @@ namespace WpfApp1.AboutAction
             JsonConvert.SerializeObject(Clipboard.GetData("quicker-action-item"));
             Clipboard.ContainsData("quicker-action-item");
             string.Join("\r\n", Enumerable.Range(5, 10).Select(x => x * 50).Select(x => x.ToString()).Select(x => $"{x}|{x}.0"));
+        }
+
+        public static void GetActionPageInfo()
+        {
+
         }
     }
 }
