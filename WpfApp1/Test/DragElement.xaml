@@ -1,0 +1,27 @@
+﻿<Window
+    x:Class="WpfApp1.Test.DragElement"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:WpfApp1.Test"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:qk="https://getquicker.net"
+    xmlns:view="clr-namespace:Quicker.View;assembly=Quicker"
+    Title="DragElement"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.TaskbarItemInfo>
+        <TaskbarItemInfo>
+            
+        </TaskbarItemInfo>
+    </Window.TaskbarItemInfo>
+    <Grid hc:WindowAttach.IsDragElement="True" Background="White">
+        <Button
+            Width="50"
+            Height="50"
+            qk:Att.Action="close:"
+            Background="#FF260707" />
+    </Grid>
+</Window>
