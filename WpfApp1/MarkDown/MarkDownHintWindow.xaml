@@ -1,17 +1,29 @@
-﻿<Window
-    x:Class="WpfApp1.MarkDown.MyMdWindow"
+﻿<hc:Window
+    x:Class="WpfApp1.MarkDown.MarkDownHintWindow"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:ava="http://icsharpcode.net/sharpdevelop/avalonedit"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:WpfApp1.MarkDown"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mdx="clr-namespace:MdXaml;assembly=MdXaml"
-    Title="myMdWindow"
-    Width="1000"
-    Height="600"
+    xmlns:qk="https://getquicker.net"
+    xmlns:qk_controls="clr-namespace:Quicker.View.Controls;assembly=Quicker"
+    Name="TheWindow"
+    Title="{Binding [title]}"
+    Width="{Binding [width], Mode=TwoWay}"
+    MinWidth="100"
+    MinHeight="100"
+    DataContext="{Binding ElementName=TheWindow, Path=dataContext}"
+    ShowInTaskbar="True"
+    SizeToContent="Height"
+    Style="{StaticResource AppWindowStyle}"
+    Topmost="True"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
+    <hc:Window.NonClientAreaContent>
+        <qk_controls:WindowToolsControl />
+    </hc:Window.NonClientAreaContent>
     <Window.Resources>
         <Style x:Key="MdStyle" TargetType="{x:Type FlowDocument}">
             <Setter Property="FlowDocument.TextAlignment" Value="Left" />
@@ -148,21 +160,35 @@
             </Style.Resources>
         </Style>
     </Window.Resources>
-    <Grid Margin="20">
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*" />
-            <ColumnDefinition Width="1*" />
-        </Grid.ColumnDefinitions>
-        <ava:TextEditor
-            Name="TextEditor"
-            FontSize="14"
-            ShowLineNumbers="True" />
-        <GridSplitter Width="3" Background="LightGray" />
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <!--  末尾不要换行,要不然会被人为没有任何东西  -->
         <mdx:MarkdownScrollViewer
             Name="mdViewer"
-            Grid.Column="2"
-            hc:ScrollViewerAttach.AutoHide="false"
+            hc:ScrollViewerAttach.AutoHide="False"
             xml:space="preserve"
-            MarkdownStyle="{StaticResource MdStyle}">[sefes](aaa)</mdx:MarkdownScrollViewer>
+            Markdown="{Binding [text]}"
+            MarkdownStyle="{StaticResource MdStyle}"></mdx:MarkdownScrollViewer>
+        <StackPanel
+            Grid.Row="1"
+            HorizontalAlignment="Center"
+            Orientation="Horizontal">
+            <Button
+                Margin="5"
+                Padding="20,0"
+                qk:Att.Action="close:Ok"
+                Style="{StaticResource ButtonPrimary}">
+                确定
+            </Button>
+            <Button
+                Margin="5"
+                Padding="20,0"
+                qk:Att.Action="close:Cancel">
+                取消
+            </Button>
+        </StackPanel>
     </Grid>
-</Window>
+</hc:Window>
