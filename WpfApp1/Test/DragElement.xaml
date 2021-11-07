@@ -13,9 +13,7 @@
     Height="450"
     mc:Ignorable="d">
     <Window.TaskbarItemInfo>
-        <TaskbarItemInfo>
-            
-        </TaskbarItemInfo>
+        <TaskbarItemInfo />
     </Window.TaskbarItemInfo>
     <Grid hc:WindowAttach.IsDragElement="True" Background="White">
         <Button

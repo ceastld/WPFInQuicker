@@ -26,7 +26,7 @@
     <Grid>
         <StackPanel>
             <Button x:Name="btnTest" Click="btnTest_Click">
-                <fa:SvgAwesome Icon="Brands_Accusoft" />
+                <fa:SvgAwesome Foreground="#09DE09" Icon="Light_Question" />
             </Button>
             <!--<TextBlock>动作编辑器</TextBlock>
             <qk:QuickActionEditor></qk:QuickActionEditor>
