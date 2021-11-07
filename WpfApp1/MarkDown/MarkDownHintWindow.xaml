@@ -246,18 +246,12 @@
             hc:ScrollViewerAttach.AutoHide="False"
             xml:space="preserve"
             Markdown="{Binding [markDown]}"
-            MarkdownStyle="{StaticResource MdStyle}">
-            [Quicker主页](https://getquicker.net/)
-
-            [好看的外观](quicker:installskin:6e824397-2fea-4638-c81b-08d999fd65a3)
-
-            ![alt text](https://files.getquicker.net/_sitefiles/kb/sharedaction/2021/11/07/201716_202824_20-19%20-%204.png)
-        </mdx:MarkdownScrollViewer>
-        <!--<FlowDocumentScrollViewer Visibility="Collapsed">
+            MarkdownStyle="{StaticResource MdStyle}"></mdx:MarkdownScrollViewer>
+        <!--<FlowDocumentScrollViewer Visibility="Visible">
             <FlowDocument>
-                <BlockUIContainer Tag="RuleSingle">
-                    <TextBlock>fsefsef</TextBlock>
-                </BlockUIContainer>
+                <Paragraph TextAlignment="Center">
+                    <Image MaxWidth="30" Source="https://files.getquicker.net/_icons/D238156FA240C2989A8581FA7D7B6F9558552F44.png" />
+                </Paragraph>
             </FlowDocument>
         </FlowDocumentScrollViewer>-->
         <StackPanel
