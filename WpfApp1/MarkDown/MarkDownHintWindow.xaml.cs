@@ -18,7 +18,7 @@ namespace WpfApp1.MarkDown
     /// <summary>
     /// MarkDownHintWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class MarkDownHintWindow : Window
+    public partial class MarkDownHintWindow : HandyControl.Controls.Window
     {
         public MarkDownHintWindow()
         {

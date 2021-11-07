@@ -14,7 +14,9 @@
     Width="{Binding [width], Mode=TwoWay}"
     MinWidth="100"
     MinHeight="100"
-    DataContext="{Binding ElementName=TheWindow, Path=dataContext}"
+    MaxHeight="{Binding [maxHeight], Mode=TwoWay}"
+    Icon="{Binding [icon]}"
+    ResizeMode="CanResize"
     ShowInTaskbar="True"
     SizeToContent="Height"
     Style="{StaticResource AppWindowStyle}"
@@ -25,153 +27,239 @@
         <qk_controls:WindowToolsControl />
     </hc:Window.NonClientAreaContent>
     <Window.Resources>
-        <Style x:Key="MdStyle" TargetType="{x:Type FlowDocument}">
-            <Setter Property="FlowDocument.TextAlignment" Value="Left" />
-            <Setter Property="FlowDocument.FontSize" Value="14" />
-            <Setter Property="FlowDocument.FontFamily" Value="{x:Static SystemFonts.MessageFontFamily}" />
-            <Setter Property="FlowDocument.PagePadding" Value="10" />
-            <Style.Resources>
-                <Style TargetType="{x:Type Section}">
-                    <Setter Property="Block.Padding" Value="10,5" />
-                    <Setter Property="Block.BorderBrush" Value="#DEDEDE" />
-                    <Setter Property="Block.BorderThickness" Value="5,0,0,0" />
-                </Style>
-                <Style xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit" TargetType="{x:Type avalonEdit:TextEditor}">
-                    <Setter Property="Control.Background" Value="#EEEEEE" />
-                    <Setter Property="avalonEdit:TextEditor.HorizontalScrollBarVisibility" Value="Auto" />
-                    <Setter Property="avalonEdit:TextEditor.VerticalScrollBarVisibility" Value="Auto" />
-                    <Setter Property="FrameworkElement.Margin" Value="2,0,2,0" />
-                    <Setter Property="Control.Padding" Value="3" />
-                </Style>
-                <!--  标题,段落,代码块  -->
-                <Style TargetType="{x:Type Paragraph}">
-                    <Setter Property="Block.Margin" Value="0,7,0,0" />
-                    <Style.Triggers>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="Heading1">
-                            <Setter Property="Block.Margin" Value="0,10,10,0" />
-                            <Setter Property="TextElement.Foreground" Value="#ff000000" />
-                            <Setter Property="TextElement.FontSize" Value="28" />
-                            <Setter Property="TextElement.FontWeight" Value="UltraBold" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="Heading2">
-                            <Setter Property="Block.Margin" Value="0,10,10,0" />
-                            <Setter Property="TextElement.Foreground" Value="#ff000000" />
-                            <Setter Property="TextElement.FontSize" Value="21" />
-                            <Setter Property="TextElement.FontWeight" Value="Bold" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="Heading3">
-                            <Setter Property="Block.Margin" Value="0,10,10,0" />
-                            <Setter Property="TextElement.Foreground" Value="#ff000000" />
-                            <Setter Property="TextElement.FontSize" Value="17.5" />
-                            <Setter Property="TextElement.FontWeight" Value="Bold" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="Heading4">
-                            <Setter Property="Block.Margin" Value="0,5,5,0" />
-                            <Setter Property="TextElement.Foreground" Value="#ff000000" />
-                            <Setter Property="TextElement.FontSize" Value="14" />
-                            <Setter Property="TextElement.FontWeight" Value="Bold" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="CodeBlock">
-                            <Setter Property="TextElement.FontFamily" Value="Courier New" />
-                            <Setter Property="TextElement.FontSize" Value="11.9" />
-                            <Setter Property="TextElement.Background" Value="#12181F25" />
-                            <Setter Property="Block.Padding" Value="20,10" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="Note">
-                            <Setter Property="Block.Margin" Value="5,0,5,0" />
-                            <Setter Property="Block.Padding" Value="10,5" />
-                            <Setter Property="Block.BorderBrush" Value="#DEDEDE" />
-                            <Setter Property="Block.BorderThickness" Value="3,3,3,3" />
-                            <Setter Property="TextElement.Background" Value="#FAFAFA" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <Style TargetType="{x:Type Run}">
-                    <Style.Triggers>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="CodeSpan">
-                            <Setter Property="TextElement.FontFamily" Value="Courier New" />
-                            <Setter Property="TextElement.FontSize" Value="11.9" />
-                            <Setter Property="TextElement.Background" Value="#12181F25" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <!--  超链接  -->
-                <Style TargetType="{x:Type Hyperlink}">
-                    <Setter Property="Inline.TextDecorations" Value="None" />
-                    <Setter Property="Foreground" Value="Blue" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Foreground" Value="Red" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <Style TargetType="{x:Type Image}">
-                    <Setter Property="FrameworkElement.MaxWidth" Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=mdx:MarkdownScrollViewer}}" />
-                    <Style.Triggers>
-                        <Trigger Property="FrameworkElement.Tag" Value="imageright">
-                            <Setter Property="FrameworkElement.Margin" Value="20,0,0,0" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <Style TargetType="{x:Type Table}">
-                    <Setter Property="Table.CellSpacing" Value="0" />
-                    <Setter Property="Block.BorderThickness" Value="0.5" />
-                    <Setter Property="Block.BorderBrush" Value="#DFE2E5" />
-                    <Style.Resources>
-                        <Style TargetType="{x:Type TableCell}">
-                            <Setter Property="TableCell.BorderThickness" Value="0.5" />
-                            <Setter Property="TableCell.BorderBrush" Value="#DFE2E5" />
-                            <Setter Property="TableCell.Padding" Value="13,6" />
-                        </Style>
-                    </Style.Resources>
-                </Style>
-                <Style TargetType="{x:Type TableRowGroup}">
-                    <Style.Triggers>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="TableHeader">
-                            <Setter Property="TextElement.FontWeight" Value="DemiBold" />
-                            <Setter Property="TextElement.FontWeight" Value="Bold" />
-                            <Setter Property="TextElement.Background" Value="#FFFFFF" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <Style TargetType="{x:Type TableRow}">
-                    <Style.Triggers>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="EvenTableRow">
-                            <Setter Property="TextElement.Background" Value="#F6F8FA" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-                <Style TargetType="{x:Type BlockUIContainer}">
-                    <Style.Triggers>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="RuleSingle">
-                            <Setter Property="Block.Margin" Value="0,3" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="RuleDouble">
-                            <Setter Property="Block.Margin" Value="0,3" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="RuleBold">
-                            <Setter Property="Block.Margin" Value="0,3" />
-                        </Trigger>
-                        <Trigger Property="FrameworkContentElement.Tag" Value="RuleBoldWithSingle">
-                            <Setter Property="Block.Margin" Value="0,3" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </Style.Resources>
-        </Style>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/MdXaml;component/Markdown.Style.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            <Style x:Key="MdStyle" TargetType="{x:Type FlowDocument}">
+                <!--  字体,大小相关样式  -->
+                <Setter Property="TextAlignment" Value="Left" />
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="Black" />
+                <Setter Property="FontFamily" Value="{x:Static SystemFonts.MessageFontFamily}" />
+                <Setter Property="PagePadding" Value="10" />
+                <Style.Resources>
+                    <!--  引用块,左边一条竖线的那个  -->
+                    <Style TargetType="{x:Type Section}">
+                        <Setter Property="Margin" Value="0,10" />
+                        <Setter Property="Padding" Value="10,0" />
+                        <Setter Property="BorderBrush" Value="#DEDEDE" />
+                        <Setter Property="BorderThickness" Value="2.5,0,0,0" />
+                    </Style>
+                    <!--  代码块样式  -->
+                    <Style xmlns:avalonEdit="http://icsharpcode.net/sharpdevelop/avalonedit" TargetType="{x:Type avalonEdit:TextEditor}">
+                        <Setter Property="avalonEdit:TextEditor.HorizontalScrollBarVisibility" Value="Auto" />
+                        <Setter Property="avalonEdit:TextEditor.VerticalScrollBarVisibility" Value="Auto" />
+                        <!--<Setter Property="FrameworkElement.Margin" Value="2,0,2,0" />-->
+                        <Setter Property="Background" Value="#FFF6F5F5" />
+                        <Setter Property="Padding" Value="5,10" />
+                        <!--<Setter Property="BorderBrush" Value="Black" />-->
+                        <Setter Property="Border.CornerRadius" Value="5" />
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type avalonEdit:TextEditor}">
+                                    <Border
+                                        Background="{TemplateBinding Background}"
+                                        BorderBrush="{TemplateBinding BorderBrush}"
+                                        BorderThickness="{TemplateBinding BorderThickness}"
+                                        CornerRadius="{TemplateBinding Border.CornerRadius}">
+                                        <ScrollViewer
+                                            Name="PART_ScrollViewer"
+                                            Padding="{TemplateBinding Padding}"
+                                            HorizontalContentAlignment="Left"
+                                            VerticalContentAlignment="Top"
+                                            CanContentScroll="True"
+                                            Content="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=TextArea}"
+                                            Focusable="False"
+                                            HorizontalScrollBarVisibility="{TemplateBinding HorizontalScrollBarVisibility}"
+                                            VerticalScrollBarVisibility="{TemplateBinding VerticalScrollBarVisibility}" />
+                                    </Border>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger Property="WordWrap" Value="True">
+                                            <Setter TargetName="PART_ScrollViewer" Property="HorizontalScrollBarVisibility" Value="Disabled" />
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                    <!--  1,2,3,4 级标题,段落,代码块  -->
+                    <Style TargetType="{x:Type Paragraph}">
+                        <!--  所有段落的边距属性,可用于调整文档的紧凑程度  -->
+                        <Setter Property="Margin" Value="0,6" />
+                        <Style.Triggers>
+                            <!--  标题  -->
+                            <Trigger Property="FrameworkContentElement.Tag" Value="Heading1">
+                                <Setter Property="Block.Margin" Value="0,10,0,0" />
+                                <Setter Property="TextElement.Foreground" Value="#ff000000" />
+                                <Setter Property="TextElement.FontSize" Value="28" />
+                                <Setter Property="TextElement.FontWeight" Value="UltraBold" />
+                                <!--  一级标题剧中  -->
+                                <Setter Property="TextAlignment" Value="Center" />
+                            </Trigger>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="Heading2">
+                                <Setter Property="TextElement.Foreground" Value="#ff000000" />
+                                <Setter Property="TextElement.FontSize" Value="21" />
+                                <Setter Property="TextElement.FontWeight" Value="Bold" />
+                            </Trigger>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="Heading3">
+                                <Setter Property="TextElement.Foreground" Value="#ff000000" />
+                                <Setter Property="TextElement.FontSize" Value="17.5" />
+                                <Setter Property="TextElement.FontWeight" Value="Bold" />
+                            </Trigger>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="Heading4">
+                                <Setter Property="Block.Margin" Value="0,5,5,0" />
+                                <Setter Property="TextElement.Foreground" Value="#ff000000" />
+                                <Setter Property="TextElement.FontSize" Value="14" />
+                                <Setter Property="TextElement.FontWeight" Value="Bold" />
+                            </Trigger>
+                            <!--  代码块,没用  -->
+                            <Trigger Property="FrameworkContentElement.Tag" Value="CodeBlock">
+                                <Setter Property="TextElement.FontFamily" Value="Courier New" />
+                                <Setter Property="TextElement.FontSize" Value="20" />
+                                <Setter Property="TextElement.Background" Value="#12181F25" />
+                                <Setter Property="Block.Padding" Value="20,10" />
+                            </Trigger>
+
+                            <Trigger Property="FrameworkContentElement.Tag" Value="Note">
+                                <Setter Property="Block.Margin" Value="5,0,5,0" />
+                                <Setter Property="Block.Padding" Value="10,5" />
+                                <Setter Property="Block.BorderBrush" Value="#DEDEDE" />
+                                <Setter Property="Block.BorderThickness" Value="3,3,3,3" />
+                                <Setter Property="TextElement.Background" Value="#FAFAFA" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <!--  普通文本  -->
+                    <Style TargetType="{x:Type Run}">
+                        <Style.Triggers>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="CodeSpan">
+                                <Setter Property="TextElement.FontFamily" Value="Courier New" />
+                                <Setter Property="TextElement.FontSize" Value="11.9" />
+                                <Setter Property="TextElement.Background" Value="#12181F25" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <!--  超链接  -->
+                    <Style TargetType="{x:Type Hyperlink}">
+                        <Setter Property="Inline.TextDecorations" Value="None" />
+                        <Setter Property="Foreground" Value="#0056C9" />
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Foreground" Value="#FFFF4F4F" />
+                            </Trigger>
+                            <Trigger Property="IsMouseCaptured" Value="True">
+                                <Setter Property="Foreground" Value="Gray" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <!--  图片  -->
+                    <Style TargetType="{x:Type Image}">
+                        <!--<Setter Property="MaxWidth" Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=mdx:MarkdownScrollViewer}, Converter={StaticResource AdjustDoubleConverter}, ConverterParameter=-20}" />-->
+                        <Setter Property="MaxWidth" Value="{Binding ActualWidth, RelativeSource={RelativeSource AncestorType=mdx:MarkdownScrollViewer}}" />
+                        <Style.Triggers>
+                            <Trigger Property="FrameworkElement.Tag" Value="imageright">
+                                <Setter Property="HorizontalAlignment" Value="Right" />
+                            </Trigger>
+                            <Trigger Property="Tag" Value="imageleft">
+                                <Setter Property="HorizontalAlignment" Value="Left" />
+                            </Trigger>
+                            <Trigger Property="Tag" Value="imagecenter">
+                                <Setter Property="HorizontalAlignment" Value="Center" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <!--  列表  -->
+                    <Style TargetType="{x:Type List}">
+                        <Setter Property="Margin" Value="0,5" />
+                    </Style>
+                    <!--  表格  -->
+                    <Style TargetType="{x:Type Table}">
+                        <Setter Property="Table.CellSpacing" Value="0" />
+                        <Setter Property="Block.BorderThickness" Value="0.3" />
+                        <Setter Property="Background" Value="White" />
+                        <!--<Setter Property="BorderThickness" Value="10"></Setter>-->
+                        <Setter Property="BorderBrush" Value="Gray" />
+                        <Style.Resources>
+                            <Style TargetType="{x:Type TableCell}">
+                                <Setter Property="TableCell.BorderThickness" Value="0.2" />
+                                <Setter Property="TableCell.BorderBrush" Value="Gray" />
+                                <Setter Property="TableCell.Padding" Value="13,6" />
+                            </Style>
+                        </Style.Resources>
+                    </Style>
+                    <!--  表头样式  -->
+                    <Style TargetType="{x:Type TableRowGroup}">
+                        <Style.Triggers>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="TableHeader">
+                                <Setter Property="TextElement.FontWeight" Value="DemiBold" />
+                                <Setter Property="TextElement.FontWeight" Value="Bold" />
+                                <Setter Property="TextElement.Background" Value="#FFF8F8F8" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <!--  去除表头后,双数行的样式  -->
+                    <Style TargetType="{x:Type TableRow}">
+                        <Style.Triggers>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="EvenTableRow">
+                                <Setter Property="TextElement.Background" Value="#FFF8F8F8" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <!--  表格列样式  -->
+                    <Style TargetType="{x:Type TableColumn}" />
+                    <!--  加粗,斜体,下划线  -->
+                    <Style TargetType="{x:Type BlockUIContainer}">
+                        <Style.Triggers>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="RuleSingle">
+                                <Setter Property="Block.Margin" Value="0,3" />
+                            </Trigger>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="RuleDouble">
+                                <Setter Property="Block.Margin" Value="0,3" />
+                            </Trigger>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="RuleBold">
+                                <Setter Property="Block.Margin" Value="0,3" />
+                            </Trigger>
+                            <Trigger Property="FrameworkContentElement.Tag" Value="RuleBoldWithSingle">
+                                <Setter Property="Block.Margin" Value="0,3" />
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                    <!--  分割线  -->
+                    <Style TargetType="{x:Type Separator}">
+                        <Setter Property="Height" Value="0.5" />
+                        <Setter Property="Background" Value="#A8A8A8" />
+                    </Style>
+                </Style.Resources>
+            </Style>
+            <!--<Style BasedOn="{StaticResource MdStyle}" TargetType="{x:Type FlowDocument}" />-->
+        </ResourceDictionary>
     </Window.Resources>
     <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition />
             <RowDefinition Height="auto" />
         </Grid.RowDefinitions>
-        <!--  末尾不要换行,要不然会被人为没有任何东西  -->
+        <!--  末尾不要换行,要不然会被认为没有任何东西  -->
         <mdx:MarkdownScrollViewer
             Name="mdViewer"
             hc:ScrollViewerAttach.AutoHide="False"
             xml:space="preserve"
-            Markdown="{Binding [text]}"
-            MarkdownStyle="{StaticResource MdStyle}"></mdx:MarkdownScrollViewer>
+            Markdown="{Binding [markDown]}"
+            MarkdownStyle="{StaticResource MdStyle}">
+            [Quicker主页](https://getquicker.net/)
+
+            [好看的外观](quicker:installskin:6e824397-2fea-4638-c81b-08d999fd65a3)
+
+            ![alt text](https://files.getquicker.net/_sitefiles/kb/sharedaction/2021/11/07/201716_202824_20-19%20-%204.png)
+        </mdx:MarkdownScrollViewer>
+        <!--<FlowDocumentScrollViewer Visibility="Collapsed">
+            <FlowDocument>
+                <BlockUIContainer Tag="RuleSingle">
+                    <TextBlock>fsefsef</TextBlock>
+                </BlockUIContainer>
+            </FlowDocument>
+        </FlowDocumentScrollViewer>-->
         <StackPanel
             Grid.Row="1"
             HorizontalAlignment="Center"
@@ -181,7 +269,7 @@
                 Padding="20,0"
                 qk:Att.Action="close:Ok"
                 Style="{StaticResource ButtonPrimary}">
-                确定
+                确定(_S)
             </Button>
             <Button
                 Margin="5"
