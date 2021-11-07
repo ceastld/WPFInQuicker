@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Quicker.Domain.Actions.X;
 using Quicker.Domain.Actions.X.Storage;
 using Quicker.Utilities;
@@ -19,6 +20,10 @@ namespace WpfApp1.AboutAction
             _eval.RegisterType(Type.GetType("Quicker.Utilities.AppHelper, Quicker"));
             _eval.RegisterType(Type.GetType("Quicker.Domain.Actions.X.VarType, Quicker"));
             _eval.RegisterType(Type.GetType("Quicker.Domain.Actions.X.Storage.ActionVariable, Quicker"));
+        }
+        public static void JsonSelectSettingTest()
+        {
+
         }
         public static void GenerateVariable()
         {
@@ -49,6 +54,8 @@ namespace WpfApp1.AboutAction
                         case "dict": type = VarType.Dict; break;
                         case "time": type = VarType.DateTime; break;
                         case "image": type = VarType.Image; break;
+                        case "object":
+                        case "any": type = VarType.Any; break;
                         default: index = 0; break;
                     }
                     varName = instructions[index];
@@ -98,7 +105,7 @@ namespace WpfApp1.AboutAction
             }
             JObject template = JObject.Parse((string)_context.GetVarValue("template"));
             template["Variables"] = varList;
-            template["Steps"][0]["Note"] = "$$" + string.Join("", nameList);
+            template["Steps"][0]["InputParams"]["note"]["Value"] = "$$" + string.Join("", nameList);
             _context.SetVarValue("stepData", template.ToString());
             #endregion
         }
