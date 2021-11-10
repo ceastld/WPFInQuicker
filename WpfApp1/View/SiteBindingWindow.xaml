@@ -1,0 +1,64 @@
+﻿<hc:Window
+    x:Class="WpfApp1.View.SiteBindingWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:controls="clr-namespace:Quicker.View.Controls;assembly=Quicker"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:WpfApp1.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:qk="https://getquicker.net"
+    Title="设置绑定网址"
+    Width="500"
+    Height="200"
+    Style="{StaticResource AppWindowStyle}"
+    mc:Ignorable="d">
+    <hc:Window.NonClientAreaContent>
+        <controls:WindowToolsControl />
+    </hc:Window.NonClientAreaContent>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition MinHeight="100" />
+
+            <RowDefinition Height="70" />
+        </Grid.RowDefinitions>
+        <Grid Margin="20">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto" MinWidth="100" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Text="网址" />
+            <TextBox
+                Grid.Column="1"
+                VerticalAlignment="Center"
+                Text="{Binding [url]}"
+                TextWrapping="WrapWithOverflow" />
+        </Grid>
+        <GridSplitter
+            Grid.Row="1"
+            Height="1"
+            Background="Gray" />
+        <Grid Grid.Row="1" Margin="100,10">
+            <WrapPanel HorizontalAlignment="Right" VerticalAlignment="Top">
+                <Button
+                    qk:Att.Action="close:"
+                    Content="确定(_S)"
+                    Style="{StaticResource ButtonPrimary}" />
+                <!--  这是获取网址的按钮  -->
+                <Button
+                    Margin="10,0"
+                    qk:Att.Action="operation=sp&amp;spname=getUrl"
+                    Content="获取(_G)">
+                    <Button.ToolTip>
+                        <ToolTip>
+                            获取浏览器当前活动网址
+                        </ToolTip>
+                    </Button.ToolTip>
+                </Button>
+            </WrapPanel>
+        </Grid>
+    </Grid>
+</hc:Window>
