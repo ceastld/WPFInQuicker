@@ -7,6 +7,8 @@
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:qk="https://getquicker.net"
+    xmlns:tools="clr-namespace:Quicker.View.Tools;assembly=Quicker"
+    xmlns:wpf="clr-namespace:Quicker.Utilities.UI.Wpf;assembly=Quicker"
     Title="ActionInfoWindow"
     Width="400"
     Height="300"
@@ -79,28 +81,43 @@
                 <ColumnDefinition Width="2*" />
             </Grid.ColumnDefinitions>
             <!--<qk:IconControl Icon="{Binding [icon]}" MaxHeight="64" MaxWidth="64" ></qk:IconControl>-->
-            <qk:ActionButton
-                qk:Att.Action="operation=sp&amp;spname=debug"
-                Background="Transparent"
-                Icon="{Binding [icon]}"
-                Label="{Binding ElementName=titleBox, Path=Text}"
-                ToolTip="点击按钮进行调试"
-                ToolTipService.InitialShowDelay="100" />
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition />
+                </Grid.RowDefinitions>
+                <TextBlock Margin="5" Text="点击按钮调试" />
+                <qk:ActionButton
+                    Grid.Row="1"
+                    qk:Att.Action="operation=sp&amp;spname=debug"
+                    Background="Transparent"
+                    Icon="{Binding [icon]}"
+                    Label="{Binding ElementName=titleBox, Path=Text}"
+                    ToolTip="点击按钮进行调试"
+                    ToolTipService.InitialShowDelay="100" />
+            </Grid>
             <StackPanel
                 Grid.Column="1"
                 Margin="50,10"
                 HorizontalAlignment="Right"
                 Orientation="Vertical">
+                <StackPanel.Resources>
+                    <Style BasedOn="{StaticResource ButtonPrimary}" TargetType="Button">
+                        <Setter Property="Background" Value="Gainsboro" />
+                        <Setter Property="Foreground" Value="Black" />
+                        <Setter Property="BorderThickness" Value="0.5" />
+                        <Setter Property="BorderBrush" Value="Gray" />
+                    </Style>
+                </StackPanel.Resources>
                 <Button
                     Name="GetActionInfoBtn"
                     Margin="3"
                     qk:Att.Action="operation=sp&amp;spname=getInfo"
-                    Content="获取剪贴板动作信息" />
+                    Content="获取剪贴板动作" />
                 <Button
                     Margin="3"
                     qk:Att.Action="operation=sp&amp;spname=createBtn"
                     Content="生成调试按钮" />
-                <TextBlock Margin="5" Text="注:点击左侧按钮可进行调试." />
             </StackPanel>
         </Grid>
     </Grid>

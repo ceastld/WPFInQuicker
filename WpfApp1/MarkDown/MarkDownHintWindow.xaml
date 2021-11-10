@@ -172,6 +172,8 @@
                     <!--  列表  -->
                     <Style TargetType="{x:Type List}">
                         <Setter Property="Margin" Value="0,5" />
+                        <!--  markerOffset, 没试出效果, 后面再搞了  -->
+                        <!--<Setter Property="MarkerOffset" Value="20"></Setter>-->
                     </Style>
                     <!--  表格  -->
                     <Style TargetType="{x:Type Table}">
@@ -246,7 +248,26 @@
             hc:ScrollViewerAttach.AutoHide="False"
             xml:space="preserve"
             Markdown="{Binding [markDown]}"
-            MarkdownStyle="{StaticResource MdStyle}"></mdx:MarkdownScrollViewer>
+            MarkdownStyle="{StaticResource MdStyle}">
+            # 简短使用教程
+            # 大标题
+            ## 中标题
+            ### 小标题
+
+            ## 段落格式
+            ## 列表
+
+            1. 第一项：
+                - 第一项嵌套的第一个元素
+                - 第一项嵌套的第二个元素
+                * fseefse
+                * fsefes
+            
+            2. 第二项：
+                - 第二项嵌套的第一个元素
+                - 第二项嵌套的第二个元素
+            
+        </mdx:MarkdownScrollViewer>
         <!--<FlowDocumentScrollViewer Visibility="Visible">
             <FlowDocument>
                 <Paragraph TextAlignment="Center">

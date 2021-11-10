@@ -98,6 +98,9 @@
     <Reference Include="ToastNotifications">
       <HintPath>..\..\..\..\..\project\quicker反编译\Quicker1.24.9_dnspy\Quicker1.24.9 dll\ToastNotifications.dll</HintPath>
     </Reference>
+    <Reference Include="ToastNotifications.Messages">
+      <HintPath>..\..\..\..\..\project\quicker反编译\Quicker1.24.9_dnspy\Quicker1.24.9 dll\ToastNotifications.Messages.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -145,21 +148,14 @@
       <DependentUpon>myMdWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Search\TabSearch.cs" />
-    <Compile Include="SiteBindingSettingWindow.xaml.cs">
-      <DependentUpon>SiteBindingSettingWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="TagWindow.xaml.cs">
       <DependentUpon>TagWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Test\ClipOperation.cs" />
     <Compile Include="Test\DragElement.xaml.cs">
       <DependentUpon>DragElement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Test\ExpEnvironment.cs" />
     <Compile Include="Test\TestClass.cs" />
-    <Compile Include="Test\Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Tools\GlobalSubprogramWindow.xaml.cs">
       <DependentUpon>GlobalSubprogramWindow.xaml</DependentUpon>
     </Compile>
@@ -173,6 +169,12 @@
     </Compile>
     <Compile Include="Tools\NumpadWindow.xaml.cs">
       <DependentUpon>NumpadWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimpleSelectWIndow.xaml.cs">
+      <DependentUpon>SimpleSelectWIndow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SiteBindingWindow.xaml.cs">
+      <DependentUpon>SiteBindingWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="AboutAction\ActionInfoWindow.xaml">
       <SubType>Designer</SubType>
@@ -218,19 +220,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SiteBindingSettingWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="TagWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Test\DragElement.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Test\Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -247,6 +241,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tools\NumpadWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SimpleSelectWIndow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SiteBindingWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
