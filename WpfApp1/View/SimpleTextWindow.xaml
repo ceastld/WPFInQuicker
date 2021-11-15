@@ -1,0 +1,30 @@
+﻿<hc:Window
+    x:Class="WpfApp1.View.SimpleTextWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:avalon="http://icsharpcode.net/sharpdevelop/avalonedit"
+    xmlns:behaviors="clr-namespace:Quicker.Utilities.UI.Behaviors;assembly=Quicker"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+    xmlns:local="clr-namespace:WpfApp1.View"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:qk="https://getquicker.net"
+    xmlns:qk_controls="clr-namespace:Quicker.View.Controls;assembly=Quicker"
+    Title="{Binding [title]}"
+    Width="800"
+    Height="450"
+    Style="{StaticResource AppWindowStyle}"
+    mc:Ignorable="d">
+
+    <hc:Window.NonClientAreaContent>
+        <qk_controls:WindowToolsControl />
+    </hc:Window.NonClientAreaContent>
+    <Grid Margin="20">
+
+        <TextBox
+            AcceptsReturn="True"
+            AcceptsTab="True"
+            Text="{Binding [text]}" />
+    </Grid>
+</hc:Window>

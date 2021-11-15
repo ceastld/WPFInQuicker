@@ -63,8 +63,5 @@ namespace WpfApp1.ListBoxTest
                 _currentSelectedList = e.OriginalSource;
             }
         }
-
-
-
     }
 }

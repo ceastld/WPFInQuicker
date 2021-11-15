@@ -24,6 +24,11 @@
         </TaskbarItemInfo>
     </Window.TaskbarItemInfo>
     <Grid>
+        <TabControl TabStripPlacement="Bottom" Margin="10">
+            <TabItem Header="变量组1"></TabItem>
+            <TabItem Header="变量组2"></TabItem>
+            <TabItem Header="变量组3"></TabItem>
+        </TabControl>
         <StackPanel>
             <Button x:Name="btnTest" Click="btnTest_Click">
                 <fa:SvgAwesome Foreground="#09DE09" Icon="Light_Question" />

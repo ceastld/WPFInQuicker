@@ -32,7 +32,7 @@
                         Storyboard.TargetProperty="(Window.Opacity)"
                         From="0.0"
                         To="1.0"
-                        Duration="0:0:0.3" />
+                        Duration="0:0:0.15" />
                 </Storyboard>
             </BeginStoryboard>
         </EventTrigger>
@@ -88,7 +88,10 @@
     <Grid Margin="20">
         <Border Background="White" CornerRadius="5">
             <Border.Effect>
-                <DropShadowEffect BlurRadius="10" ShadowDepth="0" />
+                <DropShadowEffect
+                    BlurRadius="10"
+                    Opacity="0.5"
+                    ShadowDepth="0" />
             </Border.Effect>
         </Border>
         <ListBox
@@ -104,6 +107,7 @@
                     <Button
                         MinWidth="200"
                         MaxWidth="400"
+                        MaxHeight="50"
                         HorizontalContentAlignment="Left"
                         qk:Att.Action="{Binding Data, StringFormat=close:{0}}">
                         <Grid Margin="5">
@@ -112,14 +116,14 @@
                                 <ColumnDefinition />
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
-                                <RowDefinition Height="5*" />
-                                <RowDefinition Height="3*" />
+                                <RowDefinition />
+                                <RowDefinition Height="auto" />
                             </Grid.RowDefinitions>
                             <qk_controls:IconControl
                                 Grid.RowSpan="2"
                                 Grid.Column="0"
-                                Width="32"
-                                Height="32"
+                                Width="25"
+                                Height="25"
                                 Margin="5"
                                 Icon="{Binding Icon}" />
                             <TextBlock
@@ -135,7 +139,8 @@
                                 FontSize="12"
                                 Foreground="Gray"
                                 Text="{Binding Description}"
-                                TextTrimming="CharacterEllipsis" />
+                                TextTrimming="CharacterEllipsis"
+                                Visibility="{Binding Description, Converter={StaticResource String2VisibilityConverter}}" />
                         </Grid>
                     </Button>
                 </DataTemplate>
@@ -159,6 +164,16 @@
                     Data="fklesj"
                     Description="afsef"
                     Icon="fa:Light_Times" />
+                <entities:CommonOperationItem
+                    Title="aaaa"
+                    Data="撒地方"
+                    Description="afsef"
+                    Icon="fa:Light_Times" />
+                <entities:CommonOperationItem
+                    Title="啊我说了"
+                    Data="fklesj"
+                    Icon="fa:Light_Times" />
+
             </ListBox.Items>-->
         </ListBox>
         <Button

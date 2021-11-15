@@ -19,7 +19,7 @@ namespace WpfApp1.Tools
     /// <summary>
     /// NumpadWindow.xaml 的交互逻辑
     /// </summary>
-    public partial class NumpadWindow : HandyControl.Controls.Window
+    public partial class NumpadWindow : Window
     {
         public NumpadWindow()
         {

@@ -156,6 +156,12 @@
     </Compile>
     <Compile Include="Test\ExpEnvironment.cs" />
     <Compile Include="Test\TestClass.cs" />
+    <Compile Include="Test\Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Test\Window2.xaml.cs">
+      <DependentUpon>Window2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\GlobalSubprogramWindow.xaml.cs">
       <DependentUpon>GlobalSubprogramWindow.xaml</DependentUpon>
     </Compile>
@@ -170,8 +176,17 @@
     <Compile Include="Tools\NumpadWindow.xaml.cs">
       <DependentUpon>NumpadWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ClockWindow.xaml.cs">
+      <DependentUpon>ClockWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\CustomButtonWindow.xaml.cs">
+      <DependentUpon>CustomButtonWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\SimpleSelectWIndow.xaml.cs">
       <DependentUpon>SimpleSelectWIndow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SimpleTextWindow.xaml.cs">
+      <DependentUpon>SimpleTextWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SiteBindingWindow.xaml.cs">
       <DependentUpon>SiteBindingWindow.xaml</DependentUpon>
@@ -228,6 +243,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Test\Window1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Test\Window2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Tools\GlobalSubprogramWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -244,7 +267,19 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ClockWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\CustomButtonWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SimpleSelectWIndow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SimpleTextWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

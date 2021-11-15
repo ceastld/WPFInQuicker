@@ -43,5 +43,6 @@ namespace WpfApp1.View
                 item.Icon = icon;
             }
         }
+
     }
 }

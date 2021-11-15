@@ -5,11 +5,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using Newtonsoft.Json.Linq;
+using Quicker.Public.Entities;
 using Quicker.Public.Interfaces;
 
 namespace WpfApp1.Test.Test
 {
-    public static class TestClass
+    public class TestClass
     {
         public static IActionContext _context;
         public static bool GetDataFromClipboard()
@@ -67,6 +68,20 @@ namespace WpfApp1.Test.Test
                 else return fact(num - 1);
             };
             fact(1);
+        }
+        public IList<CommonOperationItem> Parse()
+        {
+            object temp = null;
+            var list = _context.GetVarValue("list");
+            if (list is string)
+            {
+                temp = (string)list;
+            }
+            else if (list is IEnumerable<string>)
+            {
+                temp = string.Join("\r\n", (IEnumerable<string>)list);
+            }
+            return CommonOperationItem.ParseLines((string)temp, true, true);
         }
     }
 }
