@@ -1,0 +1,12 @@
+﻿<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dd="urn:gong-wpf-dragdrop"
+    xmlns:entities="clr-namespace:Quicker.Public.Entities;assembly=Quicker.Public"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:mdx="clr-namespace:MdXaml;assembly=MdXaml"
+    xmlns:qk="https://getquicker.net"
+    xmlns:qk_controls="clr-namespace:Quicker.View.Controls;assembly=Quicker"
+    xmlns:view="clr-namespace:Quicker.View;assembly=Quicker">
+    <!--  {resources}  -->
+</ResourceDictionary>
