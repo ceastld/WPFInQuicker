@@ -12,9 +12,10 @@ namespace ConsoleApp1
         static void Main(string[] args)
         {
             var context = new EvalContext();
-            //context.Execute(@"'aaa''.Intersect("a");")
-            Console.WriteLine("fef".Intersect("f").ToList());
-            levenshtein("https://getquicker.net", "tps://net");
+            var b = context.Execute(@"'aaa'.Intersect('a');");
+            Console.WriteLine(b);
+            //Console.WriteLine("fef".Intersect("f").ToList());
+            //levenshtein("https://getquicker.net", "tps://net");
             Console.Read();
         }
         public static float levenshtein(string str1, string str2)
