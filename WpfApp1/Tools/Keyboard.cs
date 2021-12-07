@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace WpfApp1.Tools
 {
-    internal class Keyboard
+    internal class Keyboarda
     {
         public bool GetKeyBoardList()
         {
