@@ -12,6 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/SkinDefault.xaml" />
                 <ResourceDictionary Source="pack://application:,,,/HandyControl;component/Themes/Theme.xaml" />
+                <ResourceDictionary Source="View/theme1.xaml" />
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="AppWindowStyle" TargetType="{x:Type hc:Window}" />
             <fa:SvgAwesome x:Key="AppIconPin" Icon="Light_ArrowToTop" />

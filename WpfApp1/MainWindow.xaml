@@ -14,7 +14,7 @@
     Topmost="True"
     mc:Ignorable="d">
     <Window.Resources />
-    <Window.TaskbarItemInfo>
+    <!--<Window.TaskbarItemInfo>
         <TaskbarItemInfo>
             <TaskbarItemInfo.ThumbButtonInfos>
                 <ThumbButtonInfoCollection>
@@ -22,30 +22,15 @@
                 </ThumbButtonInfoCollection>
             </TaskbarItemInfo.ThumbButtonInfos>
         </TaskbarItemInfo>
-    </Window.TaskbarItemInfo>
+    </Window.TaskbarItemInfo>-->
     <Grid>
-        <TabControl TabStripPlacement="Bottom" Margin="10">
-            <TabItem Header="变量组1"></TabItem>
-            <TabItem Header="变量组2"></TabItem>
-            <TabItem Header="变量组3"></TabItem>
+        <TabControl Margin="10" TabStripPlacement="Bottom">
+            <TabItem Header="变量组1" />
+            <TabItem Header="变量组2" />
+            <TabItem Header="变量组3" />
         </TabControl>
         <StackPanel>
-            <Button x:Name="btnTest" Click="btnTest_Click">
-                <fa:SvgAwesome Foreground="#09DE09" Icon="Light_Question" />
-            </Button>
-            <!--<TextBlock>动作编辑器</TextBlock>
-            <qk:QuickActionEditor></qk:QuickActionEditor>
-            <TextBlock>动作按钮</TextBlock>
-            <qk:ActionButton Icon="https://files.getquicker.net/_icons/002098E8563D3F0D68BEC42AC4956CE56DD78B57.svg">
-            </qk:ActionButton>
-            <TextBlock>动作选择器</TextBlock>
-            <qk:ActionSelector></qk:ActionSelector>
-            <TextBlock></TextBlock>
-            <qk:ActionUIEditor></qk:ActionUIEditor>
-            <qk:CircleActionMenu></qk:CircleActionMenu>-->
             <qk:IconControl Height="40" Icon="https://files.getquicker.net/_icons/002098E8563D3F0D68BEC42AC4956CE56DD78B57.svg" />
-            <!--<qk:ScreenColorPickerControl></qk:ScreenColorPickerControl>-->
-            <!--<qk:SearchBoxControl></qk:SearchBoxControl>-->
             <Slider
                 Maximum="100"
                 Minimum="0"

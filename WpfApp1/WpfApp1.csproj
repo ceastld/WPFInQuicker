@@ -64,6 +64,9 @@
     <Reference Include="MdXaml">
       <HintPath>C:\Program Files\Quicker\MdXaml.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
@@ -86,6 +89,9 @@
     </Reference>
     <Reference Include="System.Web" />
     <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -144,6 +150,12 @@
     <Compile Include="MarkDown\MarkDownHintWindow.xaml.cs">
       <DependentUpon>MarkDownHintWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="MarkDown\MarkDownMessageWindow.xaml.cs">
+      <DependentUpon>MarkDownMessageWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MarkDown\MdStyleTest.xaml.cs">
+      <DependentUpon>MdStyleTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MarkDown\myMdWindow.xaml.cs">
       <DependentUpon>myMdWindow.xaml</DependentUpon>
     </Compile>
@@ -155,6 +167,8 @@
       <DependentUpon>DragElement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Test\ExpEnvironment.cs" />
+    <Compile Include="Test\GenurateReport.cs" />
+    <Compile Include="Test\ObjSetGet.cs" />
     <Compile Include="Test\TestClass.cs" />
     <Compile Include="Test\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
@@ -168,6 +182,9 @@
     <Compile Include="Tools\HintWindow2.xaml.cs">
       <DependentUpon>HintWindow2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\IconCollectionWindow.xaml.cs">
+      <DependentUpon>IconCollectionWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Keyboard.cs" />
     <Compile Include="Tools\KeyInputTools.cs" />
     <Compile Include="Tools\KeyInputWindow.xaml.cs">
@@ -176,6 +193,8 @@
     <Compile Include="Tools\NumpadWindow.xaml.cs">
       <DependentUpon>NumpadWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\FileHelper.cs" />
+    <Compile Include="Utilities\XamlClass.cs" />
     <Compile Include="View\ClockWindow.xaml.cs">
       <DependentUpon>ClockWindow.xaml</DependentUpon>
     </Compile>
@@ -231,6 +250,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="MarkDown\MarkDownMessageWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MarkDown\MdStyleTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MarkDown\myMdWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -239,7 +266,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Test\behavior.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Test\DragElement.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Test\QuickerSkin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -256,6 +291,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Tools\HintWindow2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Tools\IconCollectionWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -284,6 +323,14 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SiteBindingWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\theme1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\theme_temp.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
