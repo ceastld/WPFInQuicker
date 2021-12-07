@@ -1,0 +1,127 @@
+﻿<Window
+    x:Class="WpfApp1.MarkDown.MarkDownMessageWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:behaviors="clr-namespace:Quicker.Utilities.UI.Behaviors;assembly=Quicker"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entities="clr-namespace:Quicker.Public.Entities;assembly=Quicker.Public"
+    xmlns:fa="clr-namespace:FontAwesome5.WPF;assembly=FontAwesomeIconsWpf"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
+    xmlns:local="clr-namespace:WpfApp1.MarkDown"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mdx="clr-namespace:MdXaml;assembly=MdXaml"
+    xmlns:qk="https://getquicker.net"
+    Name="TheWindow"
+    Width="{Binding [window][width], Mode=TwoWay}"
+    Height="{Binding [window][height], Mode=TwoWay}"
+    MinWidth="100"
+    MinHeight="50"
+    MaxWidth="{Binding [window][maxWidth], Mode=TwoWay}"
+    MaxHeight="{Binding [window][maxHeight], Mode=TwoWay}"
+    hc:WindowAttach.IsDragElement="True"
+    AllowsTransparency="True"
+    Background="#02FFFFFF"
+    Foreground="Black"
+    ShowInTaskbar="False"
+    SizeToContent="Height"
+    Topmost="True"
+    WindowStyle="None"
+    mc:Ignorable="d">
+    <Window.Triggers>
+        <EventTrigger RoutedEvent="Loaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+                        Name="FormFadeAnimation"
+                        AutoReverse="False"
+                        RepeatBehavior="1x"
+                        Storyboard.TargetProperty="(Window.Opacity)"
+                        From="0.0"
+                        To="1.0"
+                        Duration="0:0:0.15" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <EventTrigger RoutedEvent="Unloaded">
+            <BeginStoryboard>
+                <Storyboard>
+                    <DoubleAnimation
+                        Name="FormFadeOutAnimation"
+                        AutoReverse="False"
+                        RepeatBehavior="1x"
+                        Storyboard.TargetProperty="(Window.Opacity)"
+                        From="1.0"
+                        To="0.0"
+                        Duration="0:0:0.15" />
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </Window.Triggers>
+    <Window.Resources>
+        <!--  {resources}  -->
+    </Window.Resources>
+    <Grid Margin="20">
+        <Border
+            Background="{Binding [window][background]}"
+            Opacity="{Binding [window][opacity]}"
+            Style="{StaticResource WindowContentBorder}">
+            <Image Margin="5" Source="{Binding [window][backgroundImage]}" />
+        </Border>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="auto" />
+            </Grid.RowDefinitions>
+            <mdx:MarkdownScrollViewer
+                Name="mdViewer"
+                Margin="15,10"
+                VerticalAlignment="Top"
+                hc:ScrollViewerAttach.AutoHide="False"
+                xml:space="preserve"
+                Background="Transparent"
+                Markdown="{Binding [markDown]}"
+                MarkdownStyle="{StaticResource MdStyle}"></mdx:MarkdownScrollViewer>
+            <ListBox
+                Name="TheButtonList"
+                Grid.Row="1"
+                Margin="10"
+                HorizontalAlignment="Center"
+                FocusVisualStyle="{x:Null}"
+                ItemsSource="{Binding [itemList]}"
+                Style="{StaticResource ButtonListBoxStyle}"
+                Template="{StaticResource HorListBoxTemplate}">
+                <ListBox.Items>
+                    <entities:CommonOperationItem
+                        Title=""
+                        Data="close:"
+                        Icon="https://files.getquicker.net/_icons/D238156FA240C2989A8581FA7D7B6F9558552F44.png" />
+                </ListBox.Items>
+            </ListBox>
+        </Grid>
+        <Button
+            Width="20"
+            Height="20"
+            HorizontalAlignment="Right"
+            VerticalAlignment="Top"
+            qk:Att.Action="close:"
+            Background="Transparent">
+            <Button.Style>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Content" Value="" />
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Content">
+                                <Setter.Value>
+                                    <fa:SvgAwesome Icon="Light_Times" />
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Window>

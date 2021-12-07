@@ -1,0 +1,29 @@
+﻿<Window
+    x:Class="WpfApp1.MarkDown.MdStyleTest"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:WpfApp1.MarkDown"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:mdx="clr-namespace:MdXaml;assembly=MdXaml"
+    Title="MdStyleTest"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <mdx:MarkdownScrollViewer
+            Name="mdViewer"
+            hc:ScrollViewerAttach.AutoHide="False"
+            xml:space="preserve"
+            FocusVisualStyle="{x:Null}"
+            Markdown="{Binding [markDown]}"
+            MarkdownStyle="{StaticResource MdStyle}">
+            ```
+            fsefsef
+            fsfsef
+            sfefsef
+            ```
+        </mdx:MarkdownScrollViewer>
+    </Grid>
+</Window>

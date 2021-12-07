@@ -6,6 +6,10 @@ using System.Windows.Input;
 using System.Collections.Generic;
 using System.Windows;
 using ICSharpCode.AvalonEdit;
+using System.Windows.Controls;
+using System.Windows.Threading;
+using Quicker.Utilities;
+using System;
 
 namespace WpfApp1.MarkDown
 {
@@ -18,33 +22,61 @@ namespace WpfApp1.MarkDown
         {
             InitializeComponent();
         }
-
         public static void OnWindowCreated(Window win, IDictionary<string, object> dataContext, ICustomWindowContext winContext)
         {
-            win.CommandBindings.Add(new CommandBinding(
-               NavigationCommands.GoToPage,
-               (sender, e) =>
-               {
-                   var proc = new Process();
-                   proc.StartInfo.UseShellExecute = true;
-                   proc.StartInfo.FileName = (string)e.Parameter;
-                   proc.Start();
-               }));
-            var viewer = win.FindName("mdViewer") as MarkdownScrollViewer;
-            var textEditor = win.FindName("TextEditor") as TextEditor;
-            textEditor.TextChanged += (s, e) =>
+            MdWrapp = new MdViewerWrapper(win, dataContext);
+        }
+        public static MdViewerWrapper MdWrapp;
+        public class DelayTriggerTimer
+        {
+            public DispatcherTimer Timer;
+            public DelayTriggerTimer(int ms)
             {
-                dataContext["text"] = textEditor.Text;
-                viewer.Markdown = textEditor.Text;
-            };
-            textEditor.Text = (string)dataContext["text"];
+                Timer = new DispatcherTimer()
+                {
+                    Interval = TimeSpan.FromMilliseconds(ms),
+                };
+                Timer.Tick += Timer_Tick;
+                Timer.Start();
+            }
+            public Action DoAction = null;
+            private void Timer_Tick(object sender, EventArgs e)
+            {
+                if (DoAction == null) return;
+                DoAction.Invoke();
+                DoAction = null;
+            }
         }
         public class MdViewerWrapper
         {
             public MarkdownScrollViewer MdViewer;
-            public MdViewerWrapper(MarkdownScrollViewer mdViewer)
+            public TextEditor TextEditor;
+            public DelayTriggerTimer DelayTimer;
+            private readonly IDictionary<string, object> DataContext;
+            private readonly Window TheWindow;
+            public MdViewerWrapper(Window win, IDictionary<string, object> dataContext)
             {
-                MdViewer = mdViewer;
+                TheWindow = win;
+                DataContext = dataContext;
+                DelayTimer = new DelayTriggerTimer(200);
+                MdViewer = TheWindow.FindName("mdViewer") as MarkdownScrollViewer;
+                TextEditor = TheWindow.FindName("TextEditor") as TextEditor;
+                TextEditor.TextChanged += TextEditor_TextChanged;
+                TextEditor.Text = (string)dataContext["text"];
+                (TheWindow.FindName("TheCopyButton") as Button).Click += CopyButton_Click;
+            }
+            private void TextEditor_TextChanged(object sender, EventArgs e)
+            {
+                DelayTimer.DoAction = () =>
+                {
+                    DataContext["text"] = TextEditor.Text;
+                    MdViewer.Markdown = TextEditor.Text;
+                };
+            }
+            private void CopyButton_Click(object sender, RoutedEventArgs e)
+            {
+                Clipboard.SetText(TextEditor.Text);
+                AppHelper.ShowSuccess("文本已写入剪贴板");
             }
         }
     }
