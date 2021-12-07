@@ -13,6 +13,14 @@ namespace WpfApp1.Test
     {
         public static IActionContext _context;
         public static EvalContext _eval;
+        public static object GetVarValue(string key)
+        {
+            return _context.GetVarValue(key);
+        }
+        public static T GetVarValue<T>(string key) where T : class
+        {
+            return (T)_context.GetVarValue(key);
+        }
     }
     public class Test1 : ExpEnvironment
     {

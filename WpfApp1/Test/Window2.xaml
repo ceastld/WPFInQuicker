@@ -4,16 +4,55 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:behaviors="clr-namespace:Quicker.Utilities.UI.Behaviors;assembly=Quicker"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entities="clr-namespace:Quicker.Public.Entities;assembly=Quicker.Public"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:WpfApp1.Test"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:qk="https://getquicker.net"
     xmlns:qk_controls="clr-namespace:Quicker.View.Controls;assembly=Quicker"
+    xmlns:system="clr-namespace:System;assembly=mscorlib"
     Title="Window2"
-    Width="800"
-    Height="450"
+    Width="400"
+    Height="200"
+    hc:WindowAttach.IsDragElement="True"
     mc:Ignorable="d">
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Grid />
+    <Window.Resources>
+        <system:Double x:Key="BigButtonSize">70</system:Double>
+        <SolidColorBrush x:Key="ButtonMouseOverBrush" Color="Transparent" />
+    </Window.Resources>
+    <Grid>
+        <!--<TextBlock
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Center"
+            FontSize="100"
+            TextAlignment="Center">
+            <TextBlock.Foreground>
+                <RadialGradientBrush>
+                    <GradientStop Offset="0" Color="#FFF050EC" />
+                    <GradientStop Offset="1" Color="#FFF9EBF6" />
+                    <GradientStop Offset="0.57" Color="#FFF2AFF3" />
+                </RadialGradientBrush>
+            </TextBlock.Foreground>
+            啊啊啊
+        </TextBlock>-->
+        <!--<Button qk:Att.Action="operation=open&amp;data=quicker:showmessage:aaa" />-->
+        <ListBox
+            Name="TheButtonList"
+            Grid.Row="1"
+            Margin="10"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center"
+            FocusVisualStyle="{x:Null}"
+            ItemTemplate="{StaticResource BigIconDataTemplate}"
+            ItemsSource="{Binding [itemList]}"
+            Template="{StaticResource HorListBoxTemplate}">
+            <ListBox.Items>
+                <entities:CommonOperationItem
+                    Title="测试"
+                    Data="close:"
+                    Icon="https://files.getquicker.net/_icons/D238156FA240C2989A8581FA7D7B6F9558552F44.png" />
+            </ListBox.Items>
+        </ListBox>
+
     </Grid>
 </Window>
