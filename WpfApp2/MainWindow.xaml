@@ -41,7 +41,6 @@
                 <hc:CheckComboBoxItem>fesf</hc:CheckComboBoxItem>
                 <hc:CheckComboBoxItem>fesf</hc:CheckComboBoxItem>
             </hc:CheckComboBox>
-            <qk:IconControl
         </StackPanel>
     </Grid>
 </Window>

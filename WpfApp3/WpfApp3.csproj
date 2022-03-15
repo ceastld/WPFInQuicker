@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C1CB0A7E-F448-4420-A9DD-A84BD0299152}</ProjectGuid>
+    <ProjectGuid>{C573DCEA-E29E-430B-A95F-F2B34C131ACF}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>WpfApp2</RootNamespace>
-    <AssemblyName>WpfApp2</AssemblyName>
+    <RootNamespace>WpfApp3</RootNamespace>
+    <AssemblyName>WpfApp3</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -16,7 +16,7 @@
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>x64</PlatformTarget>
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -35,39 +35,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DotNetProjects.SVGImage">
-      <HintPath>C:\Program Files\Quicker\DotNetProjects.SVGImage.dll</HintPath>
-    </Reference>
-    <Reference Include="DotNetProjects.Wpf.Extended.Toolkit">
-      <HintPath>C:\Program Files\Quicker\DotNetProjects.Wpf.Extended.Toolkit.dll</HintPath>
-    </Reference>
-    <Reference Include="FontAwesomeIconsWpf">
-      <HintPath>C:\Program Files\Quicker\FontAwesomeIconsWpf.dll</HintPath>
-    </Reference>
-    <Reference Include="GongSolutions.WPF.DragDrop">
-      <HintPath>C:\Program Files\Quicker\GongSolutions.WPF.DragDrop.dll</HintPath>
-    </Reference>
-    <Reference Include="HandyControl">
-      <HintPath>C:\Program Files\Quicker\HandyControl.dll</HintPath>
-    </Reference>
-    <Reference Include="ICSharpCode.AvalonEdit">
-      <HintPath>C:\Program Files\Quicker\ICSharpCode.AvalonEdit.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net">
-      <HintPath>C:\Program Files\Quicker\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Quicker">
-      <HintPath>C:\Program Files\Quicker\Quicker.exe</HintPath>
-    </Reference>
-    <Reference Include="Quicker.Common">
-      <HintPath>C:\Program Files\Quicker\Quicker.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Quicker.Public">
-      <HintPath>C:\Program Files\Quicker\Quicker.Public.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -77,27 +46,15 @@
     <Reference Include="System.Xaml">
       <RequiredTargetFramework>4.0</RequiredTargetFramework>
     </Reference>
-    <Reference Include="ToastNotifications">
-      <HintPath>C:\Program Files\Quicker\ToastNotifications.dll</HintPath>
-    </Reference>
-    <Reference Include="ToastNotifications.Messages">
-      <HintPath>C:\Program Files\Quicker\ToastNotifications.Messages.dll</HintPath>
-    </Reference>
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-    <Reference Include="Z.Expressions.Eval">
-      <HintPath>C:\Program Files\Quicker\Z.Expressions.Eval.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ApplicationDefinition Include="App.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -106,18 +63,12 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="IndentTest.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Window1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MessageHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -142,11 +93,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <PackageReference Include="Newtonsoft.Json">
-      <Version>13.0.1</Version>
-    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,0 +1,55 @@
+﻿<Window
+    x:Class="WpfApp2.Window1"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:hc="https://handyorg.github.io/handycontrol"
+    xmlns:local="clr-namespace:WpfApp2"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Name="TheWindow"
+    Title="Window1"
+    Width="400"
+    Height="300"
+    mc:Ignorable="d">
+    <Window.Resources>
+        <Style TargetType="{x:Type TextBlock}">
+            <Setter Property="VerticalAlignment" Value="Top" />
+            <Setter Property="Margin" Value="0,7,5,7" />
+            <Setter Property="HorizontalAlignment" Value="Right" />
+        </Style>
+    </Window.Resources>
+    <StackPanel Margin="20" Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="文本选择工具" />
+            <StackPanel Grid.Column="1">
+                <hc:CheckComboBox Grid.Column="1">
+                    <hc:CheckComboBoxItem Content="选择图标" IsSelected="True" />
+                    <hc:CheckComboBoxItem Content="选择图标" />
+                    <hc:CheckComboBoxItem Content="选择图标" />
+                </hc:CheckComboBox>
+                <Button
+                    Margin="0,5"
+                    HorizontalAlignment="Left"
+                    Click="Button_Click"
+                    Visibility="{Binding ElementName=TheWindow, Path=IsUsingCustomTextTool, Converter={StaticResource Boolean2VisibilityReConverter}}">
+                    自定义文本选择工具
+                </Button>
+            </StackPanel>
+        </Grid>
+        <Grid Margin="0,5" Visibility="{Binding ElementName=TheWindow, Path=IsUsingCustomTextTool, Converter={StaticResource Boolean2VisibilityConverter}}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150" />
+                <ColumnDefinition />
+            </Grid.ColumnDefinitions>
+            <TextBlock Text="自定义文本选择工具" />
+            <TextBox
+                x:Name="CustomTextToolBox"
+                Grid.Column="1"
+                AcceptsReturn="True" />
+        </Grid>
+    </StackPanel>
+</Window>

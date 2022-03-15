@@ -1,7 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using Quicker.Public.Entities;
+using Quicker.Public.Extensions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Runtime.Remoting.Contexts;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using Z.Expressions;
 
@@ -11,12 +17,17 @@ namespace ConsoleApp1
     {
         static void Main(string[] args)
         {
-            var context = new EvalContext();
-            var b = context.Execute(@"'aaa'.Intersect('a');");
-            Console.WriteLine(b);
-            //Console.WriteLine("fef".Intersect("f").ToList());
-            //levenshtein("https://getquicker.net", "tps://net");
+            HttpRequestAsync();
             Console.Read();
+        }
+        public static HttpClient Client = new HttpClient();
+        public static async void HttpRequestAsync()
+        {
+            string responseBody = await Client.GetStringAsync("https://getquicker.net/User/Actions/113342-Ceastld");
+            Console.WriteLine(responseBody);
+            //var content = new StringContent();
+            //content.Headers.
+            //Client.PostAsync("https://api.getquicker.net/api/SharedAction/Vote",)
         }
         public static float levenshtein(string str1, string str2)
         {
@@ -60,6 +71,93 @@ namespace ConsoleApp1
             float similarity = 1 - (float)dif[len1, len2] / Math.Max(str1.Length, str2.Length);
             Console.WriteLine("相似度：" + similarity);
             return similarity;
+        }
+
+        public static IList<CommonOperationItem> tab缩进解析()
+        {
+            string data = @"
+- sefk
+
+  - fskel
+
+  - fsef
+
+    - fsek
+
+  - fse
+";
+            var code = data.SplitToList();
+            if (code.Length == 0) return new List<CommonOperationItem>();
+
+            #region 缩进判断
+            string indent = "";
+            if (string.IsNullOrEmpty(indent))
+            {
+                indent = Regex.Match(string.Join("\r\n", code), @"^\s+", RegexOptions.Multiline).Value;
+                if (string.IsNullOrEmpty(indent))
+                {
+                    indent = "\t";
+                }
+            }
+            #endregion
+
+            #region level func
+            Func<string, int> gl = str =>
+            {
+                int i = 0;
+                while (i < str.Length && str[i] == indent[i % indent.Length])
+                {
+                    i++;
+                }
+                return i / indent.Length;
+            };
+            #endregion
+
+            #region main
+            var root = new CommonOperationItem() //根节点
+            {
+                Title = "",
+                Children = new List<CommonOperationItem>()
+            };
+            var parentList = new List<CommonOperationItem>() { root };//路径
+
+            int lastLevel = gl(code[0]);
+
+            List<string> pathList = new List<string>();
+
+            foreach (string line in code)
+            {
+                if (string.IsNullOrWhiteSpace(line)) continue;
+                var level = gl(line);
+                var item = CommonOperationItem.ParseLine(line.Trim(), true);
+                //同级
+                if (level == lastLevel)
+                {
+                    parentList.Last().Children.Add(item);
+                }
+                //父级兄弟
+                else if (level < lastLevel)
+                {
+                    if (parentList.Count > 0)
+                    {
+                        var index = Math.Min(parentList.Count - 1, level);
+                        parentList = parentList.Take(index + 1).ToList();
+                    }
+                    parentList.Last().Children.Add(item);
+                }
+                //子级
+                else if (level > lastLevel)
+                {
+                    var parent = parentList.Last().Children.Last();
+                    parent.Children = new List<CommonOperationItem>() { item };
+                    parentList.Add(parent);
+                }
+                lastLevel = level;
+                pathList.Add(string.Join(@"\", parentList.Select(x => x.Title)) + "\\" + item.Title);
+            }
+            //_context.SetVarValue("pathList", pathList);
+            return root.Children;
+            #endregion
         }
 
     }
