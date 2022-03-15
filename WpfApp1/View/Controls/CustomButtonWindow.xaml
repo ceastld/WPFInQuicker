@@ -63,8 +63,9 @@
         </Grid.RowDefinitions>
         <Border
             Grid.RowSpan="2"
-            Background="White"
-            CornerRadius="5">
+            Background="{Binding [window][background]}"
+            CornerRadius="5"
+            Opacity="{Binding [window][opacity]}">
             <Border.Effect>
                 <DropShadowEffect
                     BlurRadius="10"
@@ -72,62 +73,54 @@
                     ShadowDepth="0" />
             </Border.Effect>
         </Border>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="auto" />
-                <ColumnDefinition />
-            </Grid.ColumnDefinitions>
-            <StackPanel
-                Margin="5,0"
-                HorizontalAlignment="Left"
+        <DockPanel Margin="5,2" VerticalAlignment="Center">
+            <DockPanel.Resources>
+                <Style TargetType="{x:Type Button}">
+                    <Setter Property="Background" Value="Transparent" />
+                    <Setter Property="BorderThickness" Value="0" />
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Grid>
+                                    <Border Background="{TemplateBinding Background}" />
+                                    <ContentPresenter />
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#66D3D3D3" />
+                        </Trigger>
+                        <Trigger Property="IsMouseCaptured" Value="True">
+                            <Setter Property="Background" Value="#99BDBDBD" />
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </DockPanel.Resources>
+            <qk:IconControl
+                Width="16"
+                Height="16"
+                Margin="2"
+                Padding="0"
                 VerticalAlignment="Center"
-                Orientation="Horizontal">
-                <qk:IconControl
-                    Width="16"
-                    Height="16"
-                    Padding="2"
-                    VerticalAlignment="Center"
-                    Icon="{Binding [window][icon]}"
-                    Visibility="{Binding [window][icon], Converter={StaticResource String2VisibilityConverter}}" />
-                <TextBlock
-                    Margin="3,0"
-                    FontSize="13"
-                    Text="{Binding [window][title]}" />
-            </StackPanel>
-            <StackPanel
-                Grid.Column="1"
-                HorizontalAlignment="Right"
-                Orientation="Horizontal">
-                <StackPanel.Resources>
-                    <Style TargetType="{x:Type Button}">
-                        <Setter Property="Background" Value="Transparent" />
-                        <Setter Property="BorderThickness" Value="0" />
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="Button">
-                                    <Grid>
-                                        <Border Background="{TemplateBinding Background}" />
-                                        <ContentPresenter />
-                                    </Grid>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                        <Style.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter Property="Background" Value="#66D3D3D3" />
-                            </Trigger>
-                            <Trigger Property="IsMouseCaptured" Value="True">
-                                <Setter Property="Background" Value="#99BDBDBD" />
-                            </Trigger>
-                        </Style.Triggers>
-                    </Style>
-                </StackPanel.Resources>
-                <qk_controls:WindowToolsControl />
-                <Button Width="40" qk:Att.Action="close:">
-                    <fa:SvgAwesome Height="16" Icon="Light_Times" />
-                </Button>
-            </StackPanel>
-        </Grid>
+                DockPanel.Dock="Left"
+                Icon="{Binding [window][icon]}"
+                Visibility="{Binding [window][icon], Converter={StaticResource String2VisibilityConverter}}" />
+            <TextBlock
+                Margin="3,0"
+                VerticalAlignment="Center"
+                DockPanel.Dock="Left"
+                FontSize="13"
+                Text="{Binding [window][title]}" />
+            <Button
+                Width="40"
+                qk:Att.Action="close:"
+                DockPanel.Dock="Right">
+                <fa:SvgAwesome Height="16" Icon="Light_Times" />
+            </Button>
+            <qk_controls:WindowToolsControl DockPanel.Dock="Right" />
+        </DockPanel>
         <Grid Grid.Row="1" Margin="15">
             <Grid.RowDefinitions>
                 <RowDefinition Height="auto" />
@@ -135,7 +128,7 @@
             </Grid.RowDefinitions>
             <ScrollViewer>
                 <TextBlock
-                    Margin="5"
+                    Margin="5,0"
                     HorizontalAlignment="Center"
                     FontSize="{Binding [fontSize]}"
                     Text="{Binding [text]}"
@@ -145,7 +138,8 @@
             <ListBox
                 Grid.Row="1"
                 Margin="0,5,0,0"
-                HorizontalAlignment="Stretch"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
                 dd:DragDrop.IsDragSource="True"
                 dd:DragDrop.IsDropTarget="True"
                 ItemsSource="{Binding [itemList]}"
