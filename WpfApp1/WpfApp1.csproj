@@ -83,6 +83,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>C:\Program Files\Quicker\System.ValueTuple.dll</HintPath>
@@ -126,14 +127,16 @@
       <DependentUpon>ActionInfoWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="AboutAction\ActionInfo.cs" />
-    <Compile Include="AboutAction\ActionStep.cs" />
-    <Compile Include="AboutAction\Designer\CopyVariable.cs" />
+    <Compile Include="AboutAction\QuickerActionStep.cs" />
     <Compile Include="AboutAction\Designer\LogoDesginer.xaml.cs">
       <DependentUpon>LogoDesginer.xaml</DependentUpon>
     </Compile>
     <Compile Include="AboutAction\Designer\ActionDesignerInfo.cs" />
     <Compile Include="AboutAction\Storate\State.cs" />
     <Compile Include="AboutAction\Variable.cs" />
+    <Compile Include="Customization\BoxSizeCompute.xaml.cs">
+      <DependentUpon>BoxSizeCompute.xaml</DependentUpon>
+    </Compile>
     <Compile Include="FullScreen\GirdBorder.xaml.cs">
       <DependentUpon>GirdBorder.xaml</DependentUpon>
     </Compile>
@@ -167,15 +170,24 @@
       <DependentUpon>DragElement.xaml</DependentUpon>
     </Compile>
     <Compile Include="Test\ExpEnvironment.cs" />
+    <Compile Include="Test\FlowDocumentTest.xaml.cs">
+      <DependentUpon>FlowDocumentTest.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Test\GenurateReport.cs" />
+    <Compile Include="Test\IconClass.cs" />
+    <Compile Include="Test\mychar.cs" />
     <Compile Include="Test\ObjSetGet.cs" />
     <Compile Include="Test\TestClass.cs" />
+    <Compile Include="Test\IndentClass.cs" />
     <Compile Include="Test\Window1.xaml.cs">
       <DependentUpon>Window1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Test\Window2.xaml.cs">
       <DependentUpon>Window2.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\SelectorInQuicker.cs" />
+    <Compile Include="Tools\GetVariable.cs" />
+    <Compile Include="Tools\QKPanelClick.cs" />
     <Compile Include="Tools\GlobalSubprogramWindow.xaml.cs">
       <DependentUpon>GlobalSubprogramWindow.xaml</DependentUpon>
     </Compile>
@@ -190,16 +202,36 @@
     <Compile Include="Tools\KeyInputWindow.xaml.cs">
       <DependentUpon>KeyInputWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Tools\MenuTools.cs" />
     <Compile Include="Tools\NumpadWindow.xaml.cs">
       <DependentUpon>NumpadWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utilities\ActionItemHp.cs" />
+    <Compile Include="Utilities\ClipboardHelper.cs" />
     <Compile Include="Utilities\FileHelper.cs" />
+    <Compile Include="Utilities\win32\NativeMethod.cs" />
     <Compile Include="Utilities\XamlClass.cs" />
     <Compile Include="View\ClockWindow.xaml.cs">
       <DependentUpon>ClockWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\Controls\CustomButtonWindow.xaml.cs">
       <DependentUpon>CustomButtonWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\DataBaseWindow.xaml.cs">
+      <DependentUpon>DataBaseWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\MultiColumnSelectWindow.xaml.cs">
+      <DependentUpon>MultiColumnSelectWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Controls\TreeViewWindow.xaml.cs">
+      <DependentUpon>TreeViewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Icon\IconWindow.xaml.cs">
+      <DependentUpon>IconWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\Icon\ImageHelper.cs" />
+    <Compile Include="View\MyTable\DataGridTest.xaml.cs">
+      <DependentUpon>DataGridTest.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SimpleSelectWIndow.xaml.cs">
       <DependentUpon>SimpleSelectWIndow.xaml</DependentUpon>
@@ -210,11 +242,18 @@
     <Compile Include="View\SiteBindingWindow.xaml.cs">
       <DependentUpon>SiteBindingWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\Widgets\TimeWindow.xaml.cs">
+      <DependentUpon>TimeWindow.xaml</DependentUpon>
+    </Compile>
     <Page Include="AboutAction\ActionInfoWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="AboutAction\Designer\LogoDesginer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Customization\BoxSizeCompute.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -274,6 +313,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Test\FlowDocumentTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Test\QuickerSkin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -314,6 +357,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\Controls\DataBaseWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\MultiColumnSelectWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Controls\TreeViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Icon\IconWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MyTable\DataGridTest.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\SimpleSelectWIndow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -326,11 +389,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\theme1.xaml">
+    <Page Include="View\theme.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\theme_temp.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\Widgets\TimeWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -362,6 +429,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Utilities\Indent\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

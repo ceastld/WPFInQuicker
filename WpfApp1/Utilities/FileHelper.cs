@@ -17,8 +17,9 @@ namespace WpfApp1.Utilities
         {
             List<string> files = (List<string>)_context.GetVarValue("fileList");
             int name_index = 0;
-            foreach (string x in files)
+            for (int i = 0; i < files.Count; i++)
             {
+                string x = files[i];
                 if (!File.Exists(x)) continue;
                 string dir = Path.GetDirectoryName(x);
                 string ext = Path.GetExtension(x);
@@ -29,6 +30,7 @@ namespace WpfApp1.Utilities
                     if (!File.Exists(path_new))
                     {
                         new FileInfo(x).MoveTo(path_new);
+                        files[i] = path_new;
                         break;
                     }
                 }

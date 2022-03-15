@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TextListEditor", "TextListE
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApp2", "ConsoleApp2\ConsoleApp2.csproj", "{E53382F8-2391-4AB8-B5A9-AF01071729A5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp3", "WpfApp3\WpfApp3.csproj", "{C573DCEA-E29E-430B-A95F-F2B34C131ACF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttachTest", "AttachTest\AttachTest.csproj", "{06FB354F-1FC3-4BD9-A300-712C74982E53}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +43,14 @@ Global
 		{E53382F8-2391-4AB8-B5A9-AF01071729A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E53382F8-2391-4AB8-B5A9-AF01071729A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E53382F8-2391-4AB8-B5A9-AF01071729A5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C573DCEA-E29E-430B-A95F-F2B34C131ACF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C573DCEA-E29E-430B-A95F-F2B34C131ACF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C573DCEA-E29E-430B-A95F-F2B34C131ACF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C573DCEA-E29E-430B-A95F-F2B34C131ACF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{06FB354F-1FC3-4BD9-A300-712C74982E53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{06FB354F-1FC3-4BD9-A300-712C74982E53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{06FB354F-1FC3-4BD9-A300-712C74982E53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{06FB354F-1FC3-4BD9-A300-712C74982E53}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -304,25 +304,25 @@
                         <Setter Property="Block.Margin" Value="0,10,0,0" />
                         <Setter Property="TextElement.Foreground" Value="{DynamicResource HeaderBrush}" />
                         <Setter Property="TextElement.FontSize" Value="28" />
-                        <Setter Property="TextElement.FontWeight" Value="UltraBold" />
+                        <Setter Property="TextElement.FontWeight" Value="Light" />
                         <!--  一级标题剧中  -->
                         <Setter Property="TextAlignment" Value="Center" />
                     </Trigger>
                     <Trigger Property="FrameworkContentElement.Tag" Value="Heading2">
                         <Setter Property="TextElement.Foreground" Value="{DynamicResource HeaderBrush}" />
                         <Setter Property="TextElement.FontSize" Value="21" />
-                        <Setter Property="TextElement.FontWeight" Value="Bold" />
+                        <!--<Setter Property="TextElement.FontWeight" Value="Bold" />-->
                     </Trigger>
                     <Trigger Property="FrameworkContentElement.Tag" Value="Heading3">
                         <Setter Property="TextElement.Foreground" Value="{DynamicResource HeaderBrush}" />
                         <Setter Property="TextElement.FontSize" Value="17.5" />
-                        <Setter Property="TextElement.FontWeight" Value="Bold" />
+                        <!--<Setter Property="TextElement.FontWeight" Value="Bold" />-->
                     </Trigger>
                     <Trigger Property="FrameworkContentElement.Tag" Value="Heading4">
                         <Setter Property="Block.Margin" Value="0,5,5,0" />
                         <Setter Property="TextElement.Foreground" Value="{DynamicResource HeaderBrush}" />
                         <Setter Property="TextElement.FontSize" Value="14" />
-                        <Setter Property="TextElement.FontWeight" Value="Bold" />
+                        <!--<Setter Property="TextElement.FontWeight" Value="Heavy" />-->
                     </Trigger>
                     <!--  代码块,没用  -->
                     <Trigger Property="FrameworkContentElement.Tag" Value="CodeBlock">

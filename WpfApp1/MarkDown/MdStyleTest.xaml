@@ -8,7 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:mdx="clr-namespace:MdXaml;assembly=MdXaml"
     Title="MdStyleTest"
-    Width="800"
+    Width="400"
     Height="450"
     mc:Ignorable="d">
     <Grid>
@@ -19,6 +19,12 @@
             FocusVisualStyle="{x:Null}"
             Markdown="{Binding [markDown]}"
             MarkdownStyle="{StaticResource MdStyle}">
+            # 使用教程
+            
+            ## 使用教程2
+            ### 使用教程3
+            #### 使用教程3
+            fse
             ```
             fsefsef
             fsfsef
