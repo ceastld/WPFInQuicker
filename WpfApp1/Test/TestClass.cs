@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -150,24 +151,8 @@ namespace WpfApp1.Test.Test
         public void 编辑界面()
         {
             var id = new ActionEditorWindow(null).EditingActionItem.Id;
-
         }
-        public bool 使用说明()
-        {
-            #region input
-            string instruction = "";
-            #endregion
-            //没有输入版本,直接开始提示
-
-            //判断提示是否有改变,没有改变则不提示
-            return _context.ReadState("action_instruction", "") == instruction;
-
-            //版本不是最新,开始提示
-            //var last = Convert.ToDouble(_context.ReadState("action_version", "0"));
-            //if (last < Convert.ToDouble(version)) return false;
-
-        }
-        public List<string> test()
+        public List<string> 判断大小括号()
         {
             var code = new List<string>();
             var index = code.IndexOf(x => x.Trim() == "{");
@@ -181,37 +166,7 @@ namespace WpfApp1.Test.Test
             }
             return code;
         }
-        public static void 图标收藏判断()
-        {
-            string icon = (string)_context.GetVarValue("icon");
-            if (icon.StartsWith("fa:"))
-            {
-                var re = new Regex(@"(fa:\w+):(([#\w]+))");
-                if (re.IsMatch(icon))
-                {
-                    var groups = re.Match(icon).Groups;
-                    _context.SetVarValue("icon", groups[1].Value);
-                    _context.SetVarValue("color", groups[2].Value);
-                }
-                _context.SetVarValue("type", "internal");
-            }
-            else
-            {
-                _context.SetVarValue("type", "normal");
-            }
-        }
-        public static void 图标转换()
-        {
-            var fi = "fab";
-            switch (fi)
-            {
-                case "fal": fi = "fa:Light_"; break;
-                case "far": fi = "fa:Regular_"; break;
-                case "fas": fi = "fa:Solid_"; break;
-                case "fab": fi = "fa:Brands_"; break;
-            }
-        }
-        private static void 设置是否可以触发Quicker()
+        public static void 设置是否可以触发Quicker()
         {
             var value = true;
             IntPtr handle = (IntPtr)0;
@@ -224,7 +179,7 @@ namespace WpfApp1.Test.Test
                 RegisterHWndBehavior.HWnds.TryRemove(handle, out int a);
             }
         }
-        public static string GenerateRandomString()
+        public static string 生成随机字符串()
         {
             Func<string, object> gvv = _context.GetVarValue;
             Action<string, object> svv = _context.SetVarValue;
@@ -242,6 +197,31 @@ namespace WpfApp1.Test.Test
         }
         public static void Exec(IStepContext context)
         {
+
+        }
+
+        public static SmartCollection<CommonOperationItem> 列表_构造可视化对象2()
+        {
+            var list = _context.GetVarValue("list");
+            var smartList = new SmartCollection<CommonOperationItem>((IEnumerable<CommonOperationItem>)list);
+            foreach (var item in smartList)
+            {
+                if (item.Children != null && !(item.Children is SmartCollection<CommonOperationItem>))
+                {
+                    item.Children = new SmartCollection<CommonOperationItem>(item.Children);
+                }
+            }
+            return smartList;
+        }
+
+        public void tesss()
+        {
+            string[] code = new[] { "fsef", "fse", "fsefes" };
+            foreach (var line in code)
+            {
+                var aaaa = new List<string>() { line };
+            }
+            "fe".ToJson(true);
             
         }
     }

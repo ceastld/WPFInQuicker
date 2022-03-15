@@ -3,6 +3,7 @@
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entities="clr-namespace:Quicker.Public.Entities;assembly=Quicker.Public"
     xmlns:hc="https://handyorg.github.io/handycontrol"
     xmlns:local="clr-namespace:WpfApp1.Test"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -17,6 +18,22 @@
         <qk_controls:WindowToolsControl />
     </hc:Window.NonClientAreaContent>
     <Grid>
+        <Grid.ContextMenu>
+            <ContextMenu>
+                <MenuItem Header="fse_fe" />
+            </ContextMenu>
+        </Grid.ContextMenu>
         <TextBlock Text="{Binding [dict][aa]}" />
+        <hc:CheckComboBox Style="{StaticResource CheckComboBoxExtend}">
+            <hc:CheckComboBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type entities:CommonOperationItem}">
+                    <TextBlock Text="{Binding Title}" />
+                </DataTemplate>
+            </hc:CheckComboBox.ItemTemplate>
+            <hc:CheckComboBox.Items>
+                <hc:CheckComboBoxItem Content="aaaaaaa_a" />
+                <entities:CommonOperationItem Title="test" />
+            </hc:CheckComboBox.Items>
+        </hc:CheckComboBox>
     </Grid>
 </hc:Window>
