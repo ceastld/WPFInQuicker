@@ -21,10 +21,6 @@ namespace WpfApp1.AboutAction
             _eval.RegisterType(Type.GetType("Quicker.Domain.Actions.X.VarType, Quicker"));
             _eval.RegisterType(Type.GetType("Quicker.Domain.Actions.X.Storage.ActionVariable, Quicker"));
         }
-        public static void JsonSelectSettingTest()
-        {
-
-        }
         public static void GenerateVariable()
         {
             #region InQuicker
@@ -69,7 +65,6 @@ namespace WpfApp1.AboutAction
                     AppHelper.ShowWarning(message);
                     throw new Exception(message);
                 }
-
                 var temp1 = new ActionVariable()
                 {
                     Key = varName,

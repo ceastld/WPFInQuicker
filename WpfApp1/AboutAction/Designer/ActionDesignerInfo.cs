@@ -25,35 +25,13 @@ namespace WpfApp1.AboutAction.Designer
             }
             public static WType GetWindow<WType>() where WType : class
             {
-                IntPtr handle = GetForegroundWindow();
-                HwndSource hwndSource = HwndSource.FromHwnd(handle);
-                WType winGet = hwndSource.RootVisual as WType;
-                return winGet;
+                return HwndSource.FromHwnd(GetForegroundWindow()).RootVisual as WType;
             }
-            public static Window GetWindowByHandle(int intHandle)
-            {
-                IntPtr handle = new IntPtr(intHandle);
-                HwndSource hwndSource = HwndSource.FromHwnd(handle);
-                Window winGet = hwndSource.RootVisual as Window;
-                return winGet;
-            }
-            public static WType GetWindowByHandle<WType>(int intHandle) where WType : class
-            {
-                IntPtr handle = new IntPtr(intHandle);
-                HwndSource hwndSource = HwndSource.FromHwnd(handle);
-                WType winGet = hwndSource.RootVisual as WType;
-                return winGet;
-            }
-        }
-        public enum OpType
-        {
-            Get = 1,
-            Set = 2
         }
         public static void Exec(Quicker.Public.IStepContext context)
         {
             string type = (string)context.GetVarValue("opType");
-            string methodName = GetMethodName();
+            string methodName = GetUpdataUIMethodName();
             var win = WinOp.GetWindow<Quicker.View.X.ActionDesignerWindow>();
             Application.Current.Dispatcher.Invoke(() =>
             {
@@ -94,7 +72,7 @@ namespace WpfApp1.AboutAction.Designer
             }
             return result;
         }
-        public static string GetMethodName()
+        public static string GetUpdataUIMethodName()
         {
             var type = typeof(Quicker.View.X.ActionDesignerWindow);
             List<string> methods = type.GetMethods(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic).Select(x => x.Name).ToList();
@@ -102,6 +80,5 @@ namespace WpfApp1.AboutAction.Designer
             var myMethod = methods.Skip(index).ToArray();
             return myMethod[6];
         }
-
     }
 }

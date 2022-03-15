@@ -9,14 +9,16 @@ using Z.Expressions;
 
 namespace WpfApp1.AboutAction
 {
-    class ActionStep : Test.ExpEnvironment
+    class QuickerActionStep : Test.ExpEnvironment
     {
-        public static string QucikerSteps()
+        public static void regist()
         {
             _eval.RegisterGlobalVariable("isSuccess", false);
             _eval.RegisterType(Type.GetType("Quicker.Utilities.AppHelper, Quicker"));
             _eval.RegisterType(Type.GetType("System.Windows.Forms.Clipboard, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089"));
-            //----------------
+        }
+        public static string QucikerSteps()
+        {
             const string cbType = "quicker-action-steps";
 
             #region 赋值
