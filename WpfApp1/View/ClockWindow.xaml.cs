@@ -29,7 +29,8 @@ namespace WpfApp1.View
         public static void OnWindowCreated(Window win, IDictionary<string, object> dataContext, ICustomWindowContext winContext)
         {
             var clockBlock = win.FindName("ClockBlock") as TextBlock;
-            var wrapper = new ClockWindowWrapper(clockBlock);
+            var dayBlock = win.FindName("DayBlock") as TextBlock;
+            var wrapper = new ClockWindowWrapper(clockBlock, dayBlock);
             win.MouseDoubleClick += (s, e) =>
             {
                 win.Close();
@@ -51,17 +52,20 @@ namespace WpfApp1.View
         {
             public DispatcherTimer Timer = new DispatcherTimer();
             private TextBlock ClockBlock;
-            public ClockWindowWrapper(TextBlock block)
+            private TextBlock DayBlock;
+            public ClockWindowWrapper(TextBlock block, TextBlock day)
             {
                 Timer.Interval = TimeSpan.FromSeconds(1);
                 Timer.Tick += Timer_Tick;
                 this.ClockBlock = block;
+                this.DayBlock = day;
                 Timer.Start();
             }
 
             private void Timer_Tick(object sender, EventArgs e)
             {
                 ClockBlock.Text = DateTime.Now.ToString("HH:mm:ss");
+                DayBlock.Text = DateTime.Now.ToString("yyyy/MM/dd ddd");
             }
             public void FontSizePlus()
             {
@@ -74,12 +78,14 @@ namespace WpfApp1.View
                     ClockBlock.FontSize -= 2;
             }
         }
+
     }
+
     public class ForTest
     {
         public void aaa()
         {
-            DateTime.Now.ToString("yyyy/MM/dd,ddd"); //年/月/日,周几
+            DateTime.Now.ToString("yyyy/MM/dd ddd"); //年/月/日,周几
         }
     }
 }

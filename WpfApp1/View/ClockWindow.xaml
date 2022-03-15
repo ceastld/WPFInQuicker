@@ -44,6 +44,7 @@
                 Foreground="{Binding [foreground]}"
                 Text="{Binding Source={x:Static sys:DateTime.Now}, StringFormat='{}{0:HH:mm:ss}'}" />
             <TextBlock
+                Name="DayBlock"
                 Grid.Row="1"
                 HorizontalAlignment="Right"
                 FontSize="13"

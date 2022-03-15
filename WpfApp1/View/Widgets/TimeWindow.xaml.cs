@@ -16,6 +16,7 @@ namespace WpfApp1.View.Widgets
 {
     /// <summary>
     /// TimeWindow.xaml 的交互逻辑
+    /// 显示时间控件
     /// </summary>
     public partial class TimeWindow : FadeOutWindow
     {
@@ -217,6 +218,9 @@ namespace WpfApp1.View.Widgets
                 Timer.Tick += eh;
                 Timer.Start();
             }
+            /// <summary>
+            /// 跟新控件中日期部分
+            /// </summary>
             private void UpdateDay()
             {
                 var timeNow = DateTime.Now.ToString("yyyy/MM/dd ddd");
