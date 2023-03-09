@@ -1,9 +1,14 @@
-﻿using Quicker.Utilities._3rd;
+﻿using Quicker.Modules.TextTools.Tools;
+using Quicker.Public.Entities;
+using Quicker.Utilities._3rd;
 using Quicker.View;
+using Quicker.View.Hotkeys;
+using Quicker.View.X;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -29,12 +34,50 @@ namespace WpfApp1.Tools
         {
             var coll = new SmartCollection<OperationItem>();
             coll.Reset(coll);
-
-
-
-
+            var key = new Quicker.View.Hotkeys.Hotkey("");
             return;
         }
+        public void Getkeycode(Hotkey hotkey, string keyCode)
+        {
+            var win = new KeysInputWindow(KeysInputMode.CombinedKey);
+            win.WindowStartupLocation = WindowStartupLocation.CenterScreen;
+            win.ShowDialog();
+            win.Topmost = true;
+            hotkey = win.SelectedHotkey;
+            keyCode = hotkey.ToString();
+        }
+
+        public List<string> GenerateList(List<string> list)
+        {
+            list = list.Where(x => !string.IsNullOrWhiteSpace(x))
+                       .Select(x =>
+                       {
+                           var si = x.IndexOf('|');
+                           string name = "";
+                           if (si != -1)
+                           {
+                               name = x.Substring(0, si);
+                               x = x.Substring(si + 1);
+                           }
+                           var index = x.IndexOf(':');
+                           if (index != -1)
+                           {
+                               var pre = x.Substring(0, index);
+                               var post = x.Substring(index + 1);
+                               if (string.IsNullOrEmpty(name)) name = post;
+                               if (Regex.IsMatch(pre, "^sendkeys|copy|paste|action|open"))
+                               {
+                                   return $"{name}|operation={pre}&data={post.UrlEncode()}";
+                               }
+                           }
+                           if (string.IsNullOrEmpty(name)) name = x;
+                           return $"{name}|operation=paste&data={x.UrlEncode()}";
+                       })
+                       .ToList();
+            list.Insert(0, "编辑|operation=sp&spname=编辑数据");
+            return list;
+        }
+
         public List<int> GenerateNum()
         {
             Func<List<int>> ge = () =>
@@ -128,6 +171,7 @@ namespace WpfApp1.Tools
             }
             return (int)(new Random().NextDouble() * (max - min) + min);
         }
+
 
     }
 }

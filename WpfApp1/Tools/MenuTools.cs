@@ -47,5 +47,18 @@ namespace WpfApp1.Tools
                 win.MouseLeftButtonDown += (s, e) => { win.Close(); };
             }
         }
+        public class Quicker托盘菜单
+        {
+            public static void OnWindowCreated(Window win, IDictionary<string, object> dataContext, ICustomWindowContext winContext)
+            {
+                var handle = AppState.MainWinHandle;
+                var mainWindow = HwndSource.FromHwnd(handle).RootVisual as Quicker.View.PopupWindow;
+                var menu = mainWindow.FindResource("NotifierContextMenu") as ContextMenu;
+                win.ContextMenu = menu;
+                win.Loaded += (s, e) => { menu.IsOpen = true; };
+                win.Closed += (s, e) => { win.ContextMenu = null; };
+                win.MouseLeftButtonDown += (s, e) => { win.Close(); };
+            }
+        }
     }
 }

@@ -32,10 +32,13 @@
                     <Setter Property="Margin" Value="80,10,20,10" />
                 </Style>
             </StackPanel.Resources>
-            <Grid
-                Width="128"
-                Height="128"
-                HorizontalAlignment="Center">
+            <Grid Width="128" Height="128" HorizontalAlignment="Center">
+                <!--<Grid.Resources>
+                    <Style TargetType="{x:Type qk:IconControl}">
+                        <Setter Property="Width" Value="{Binding ElementName=TheSizeSlider, Path=Value}" />
+                        <Setter Property="Height" Value="{Binding ElementName=TheSizeSlider, Path=Value}" />
+                    </Style>
+                </Grid.Resources>-->
                 <Border BorderBrush="Gray" BorderThickness="1" />
                 <Viewbox Margin="-1">
                     <qk:ActionButton
@@ -50,20 +53,26 @@
                         Icon="{Binding ElementName=ActionIcon, Path=Text, Mode=TwoWay}" />
                 </Viewbox>
             </Grid>
+            <!--<Grid>
+                <TextBlock Text="图标大小" />
+                <Slider
+                    Name="TheSizeSlider"
+                    Margin="80,0"
+                    Maximum="32"
+                    Minimum="16"
+                    Value="24" />
+            </Grid>-->
             <Grid>
                 <TextBlock Text="动作图标" />
-                <TextBox
-                    xmlns:wpf="clr-namespace:Quicker.Utilities.UI.Wpf;assembly=Quicker"
-                    Name="ActionIcon"
-                    Text="{Binding [icon]}" />
+                <TextBox Name="ActionIcon" Text="{Binding [icon], UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
             <Grid>
                 <TextBlock Text="徽标文字" />
-                <TextBox Name="BadgeTextEditor" Text="{Binding [badgeText]}" />
+                <TextBox Name="BadgeTextEditor" Text="{Binding [badgeText], UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
             <Grid>
                 <TextBlock Text="徽标背景色" />
-                <TextBox Name="BadgeColorEditor" Text="{Binding [badgeColor]}" />
+                <TextBox Name="BadgeColorEditor" Text="{Binding [badgeColor], UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
             <tool:ColorPicker
                 Name="BadgeColorPicker"
@@ -72,7 +81,7 @@
                 SelectedColor="{Binding ElementName=BadgeColorEditor, Path=Text, Mode=TwoWay}" />
             <Grid>
                 <TextBlock Text="徽标文字颜色" />
-                <TextBox Name="BadgeTextColorEditor" Text="{Binding [badgeTextColor]}" />
+                <TextBox Name="BadgeTextColorEditor" Text="{Binding [badgeTextColor], UpdateSourceTrigger=PropertyChanged}" />
             </Grid>
             <tool:ColorPicker
                 Name="BadgeTextColorPicker"
@@ -80,6 +89,6 @@
                 ColorMode="ColorCanvas"
                 SelectedColor="{Binding ElementName=BadgeTextColorEditor, Path=Text, Mode=TwoWay}" />
         </StackPanel>
-        <UniformGrid />
+        <!--<UniformGrid />-->
     </Grid>
 </hc:Window>

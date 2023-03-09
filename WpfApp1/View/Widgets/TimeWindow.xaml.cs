@@ -103,7 +103,7 @@ namespace WpfApp1.View.Widgets
 
             public DispatcherTimer Timer = new DispatcherTimer();
 
-            public void InitTimer(string type, TimeSpan time = default(TimeSpan))
+            public void InitTimer(string type, TimeSpan time = default)
             {
                 switch (type)
                 {

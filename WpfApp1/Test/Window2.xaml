@@ -21,21 +21,10 @@
         <SolidColorBrush x:Key="ButtonMouseOverBrush" Color="Transparent" />
     </Window.Resources>
     <Grid>
-        <!--<TextBlock
-            HorizontalAlignment="Stretch"
-            VerticalAlignment="Center"
-            FontSize="100"
-            TextAlignment="Center">
-            <TextBlock.Foreground>
-                <RadialGradientBrush>
-                    <GradientStop Offset="0" Color="#FFF050EC" />
-                    <GradientStop Offset="1" Color="#FFF9EBF6" />
-                    <GradientStop Offset="0.57" Color="#FFF2AFF3" />
-                </RadialGradientBrush>
-            </TextBlock.Foreground>
-            啊啊啊
-        </TextBlock>-->
-        <!--<Button qk:Att.Action="operation=open&amp;data=quicker:showmessage:aaa" />-->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
         <ListBox
             Name="TheButtonList"
             Grid.Row="1"
@@ -53,6 +42,18 @@
                     Icon="https://files.getquicker.net/_icons/D238156FA240C2989A8581FA7D7B6F9558552F44.png" />
             </ListBox.Items>
         </ListBox>
-
+        <Canvas
+            Grid.Column="1"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Path Fill="Blue">
+                <Path.Data>
+                    <GeometryGroup>
+                        <EllipseGeometry RadiusX="50" RadiusY="50" />
+                        <EllipseGeometry RadiusX="90" RadiusY="90" />
+                    </GeometryGroup>
+                </Path.Data>
+            </Path>
+        </Canvas>
     </Grid>
 </Window>

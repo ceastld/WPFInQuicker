@@ -1,0 +1,30 @@
+﻿<Window
+    x:Class="WpfApp1.View.Panel.FilePanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:entities="clr-namespace:Quicker.Public.Entities;assembly=Quicker.Public"
+    xmlns:local="clr-namespace:WpfApp1.View.Panel"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:qk="https://getquicker.net"
+    Name="ThePanel"
+    Title="FilePanel"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Grid>
+        <ListBox>
+            <ListBox.ItemTemplate>
+                <DataTemplate DataType="{x:Type entities:CommonOperationItem}">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition />
+                            <RowDefinition Height="auto" />
+                        </Grid.RowDefinitions>
+                        <qk:IconControl FontSize="{Binding ElementName=ThePanel, Path=[skin][iconColor]}" Icon="{Binding Icon}" />
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

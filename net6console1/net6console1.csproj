@@ -1,0 +1,36 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>Exe</OutputType>
+		<TargetFramework>net6.0-windows</TargetFramework>
+		<ImplicitUsings>enable</ImplicitUsings>
+		<Nullable>enable</Nullable>
+		<UseWPF>true</UseWPF>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+		<!--<UseWindowsForms>true</UseWindowsForms>-->
+	</PropertyGroup>
+
+	<ItemGroup>
+		<COMReference Include="SHDocVw">
+			<VersionMinor>1</VersionMinor>
+			<VersionMajor>1</VersionMajor>
+			<Guid>eab22ac0-30c1-11cf-a7eb-0000c05bae0b</Guid>
+			<Lcid>0</Lcid>
+			<WrapperTool>tlbimp</WrapperTool>
+			<Isolated>false</Isolated>
+			<EmbedInteropTypes>true</EmbedInteropTypes>
+		</COMReference>
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="HtmlAgilityPack" Version="1.11.46" />
+		<PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Reference Include="Quicker.Public">
+			<HintPath>C:\Program Files\Quicker\Quicker.Public.dll</HintPath>
+		</Reference>
+	</ItemGroup>
+
+</Project>

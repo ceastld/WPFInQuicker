@@ -48,7 +48,7 @@
             FocusVisualStyle="{x:Null}"
             Markdown="{Binding [markDown]}"
             MarkdownStyle="{StaticResource MdStyle}">
-            ### 圆与象限【C(21314111)】
+            ### 圆与象限【C(21314111)】fsejfklsejflksejflksejlfksejlfksejlfjselfkjeslfjesl
             ![](https://files.getquicker.net/_sitefiles/kb/sharedaction/6e668dca-6d58-409c-9d2e-08d98ae738af/2021/11/13/223614_7748_image.png)
         </mdx:MarkdownScrollViewer>
         <!--<FlowDocumentScrollViewer Visibility="Visible">
@@ -63,6 +63,7 @@
             HorizontalAlignment="Center"
             VerticalAlignment="Center"
             ItemsSource="{Binding [buttonList]}"
+            ScrollViewer.HorizontalScrollBarVisibility="Disabled"
             Style="{StaticResource ButtonListBoxStyle}"
             Template="{StaticResource HorListBoxTemplate}">
             <ListBox.Items>

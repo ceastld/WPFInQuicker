@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace WpfApp1.AboutAction
 {
-    public static class ActionInfo
+    public class ActionInfo
     {
         private static IActionContext _context;
 
@@ -56,20 +56,25 @@ namespace WpfApp1.AboutAction
             var result = Quicker.Domain.AppState.DataService.GetActionById("acc71f46-9631-44d2-a889-2be482eb6416").ToTuple();
             AppHelper.ShowSuccess(JsonConvert.SerializeObject(result.Item1));
         }
-        public static bool FindFirstAction()
+        public IEnumerable<ActionItem> GetActionsByTemplateId(string id)
+        {
+            return Quicker.Domain.AppState.DataService.GetAllActionItems()
+                .Where(x => x.TemplateId == id || x.SharedActionId == id);
+        }
+
+        public void FindFirstAction()
         {
             string actionId = (string)_context.GetVarValue("actionId");
-            var actions = Quicker.Domain.AppState.DataService.GetActionsByTemplateId(actionId);
-            _context.SetVarValue("count", actions.Count);
-            if (actions.Count > 0)
+            var actions = GetActionsByTemplateId(actionId);
+            var count = actions.Count(); _context.SetVarValue("count", count);
+            if (count > 0)
             {
-                if (actions.Count > 1)
+                if (count > 1)
                 {
                     AppHelper.ShowInformation($"你安装了多个动作 {string.Join(";", actions.Select(x => x.Title))}\r\n请找到多余的动作并删除");
                 }
-                _context.SetVarValue("actionId", actions[0].Id);
+                _context.SetVarValue("actionId", actions.First()?.Id);
             }
-            return true;
         }
         /// <summary>
         /// 生成动作写入剪贴板

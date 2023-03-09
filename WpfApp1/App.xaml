@@ -16,6 +16,10 @@
             </ResourceDictionary.MergedDictionaries>
             <Style x:Key="AppWindowStyle" TargetType="{x:Type hc:Window}" />
             <fa:SvgAwesome x:Key="AppIconPin" Icon="Light_ArrowToTop" />
+            <Style
+                x:Key="AppMenuItemBaseStyle"
+                BasedOn="{StaticResource MenuItemBaseStyle}"
+                TargetType="MenuItem" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

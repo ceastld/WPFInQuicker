@@ -34,7 +34,6 @@ namespace WpfApp1.Tools
             var adder = new VariableListAdder() { Template = template };
             adder.DoSet();
         }
-
         public static class WinOp
         {
 
@@ -49,7 +48,6 @@ namespace WpfApp1.Tools
                 return HwndSource.FromHwnd(GetForegroundWindow()).RootVisual as WType;
             }
         }
-
         public static class ReflectionHelper
         {
             public static T GetField<T>(object sender, string name) where T : class
@@ -164,8 +162,6 @@ namespace WpfApp1.Tools
             }
 
         }
-
-
 
         #region 弃用
         public static ListBox GetVariableList()

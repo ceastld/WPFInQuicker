@@ -1,0 +1,59 @@
+﻿<Window
+    x:Class="WpfApp4.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfApp4"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="MainWindow"
+    Width="800"
+    Height="450"
+    mc:Ignorable="d">
+    <Window.ContextMenu>
+        <ContextMenu StaysOpen="True">
+            <ContextMenu.Resources>
+                <!--<Style TargetType="{x:Type MenuItem}">
+                    <Setter Property="Height" Value="{Binding height}" />
+                -->
+                <!--  可以直接绑定  -->
+                <!--
+                </Style>-->
+            </ContextMenu.Resources>
+            <MenuItem Header="seklfkdfe" MouseMove="MouseMove1" />
+            <MenuItem Header="eskfse" MouseMove="MouseMove1" />
+            <MenuItem Header="fslejf" MouseMove="MouseMove1" />
+            <MenuItem Header="ffsfefljei" MouseMove="MouseMove1" />
+            <MenuItem Header="ffskfjei" MouseMove="MouseMove1" />
+        </ContextMenu>
+    </Window.ContextMenu>
+    <Grid>
+        <Menu>
+            <MenuItem
+                Header="ffslekfjei"
+                MouseMove="MouseMove1"
+                StaysOpenOnClick="True">
+                <MenuItem
+                    Header="ffslekfjei"
+                    MouseMove="MouseMove1"
+                    StaysOpenOnClick="True">
+                    <MenuItem Header="ffslekfjei" MouseMove="MouseMove1" />
+                    <MenuItem Header="ffslekfjei" MouseMove="MouseMove1" />
+                </MenuItem>
+                <MenuItem Header="ffslekfjei" MouseMove="MouseMove1" />
+            </MenuItem>
+            <MenuItem Header="ffslekfjei" MouseMove="MouseMove1">
+                <MenuItem Header="ffslekfjei" MouseMove="MouseMove1" />
+            </MenuItem>
+            <MenuItem Header="ffslekfjei" MouseMove="MouseMove1" />
+        </Menu>
+        <Menu
+            x:Name="CopyMenu"
+            Width="497"
+            Height="21"
+            Margin="10,50,0,0"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            AllowDrop="True"
+            Drop="OnDrop" />
+    </Grid>
+</Window>

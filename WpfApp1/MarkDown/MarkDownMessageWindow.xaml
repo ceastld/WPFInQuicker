@@ -24,7 +24,7 @@
     Background="#02FFFFFF"
     Foreground="Black"
     ShowInTaskbar="False"
-    SizeToContent="Height"
+    SizeToContent="{Binding [window][sizeToContent], Mode=TwoWay}"
     Topmost="True"
     WindowStyle="None"
     mc:Ignorable="d">
@@ -62,10 +62,7 @@
         <!--  {resources}  -->
     </Window.Resources>
     <Grid Margin="20">
-        <Border
-            Background="{Binding [window][background]}"
-            Opacity="{Binding [window][opacity]}"
-            Style="{StaticResource WindowContentBorder}">
+        <Border Background="{Binding [window][background]}" Opacity="{Binding [window][opacity]}" Style="{StaticResource WindowContentBorder}">
             <Image Margin="5" Source="{Binding [window][backgroundImage]}" />
         </Border>
         <Grid>
@@ -81,7 +78,8 @@
                 xml:space="preserve"
                 Background="Transparent"
                 Markdown="{Binding [markDown]}"
-                MarkdownStyle="{StaticResource MdStyle}"></mdx:MarkdownScrollViewer>
+                MarkdownStyle="{StaticResource MdStyle}"
+                ScrollViewer.HorizontalScrollBarVisibility="Disabled"></mdx:MarkdownScrollViewer>
             <ListBox
                 Name="TheButtonList"
                 Grid.Row="1"
@@ -92,10 +90,7 @@
                 Style="{StaticResource ButtonListBoxStyle}"
                 Template="{StaticResource HorListBoxTemplate}">
                 <ListBox.Items>
-                    <entities:CommonOperationItem
-                        Title=""
-                        Data="close:"
-                        Icon="https://files.getquicker.net/_icons/D238156FA240C2989A8581FA7D7B6F9558552F44.png" />
+                    <entities:CommonOperationItem Title="" Data="close:" Icon="https://files.getquicker.net/_icons/D238156FA240C2989A8581FA7D7B6F9558552F44.png" />
                 </ListBox.Items>
             </ListBox>
         </Grid>

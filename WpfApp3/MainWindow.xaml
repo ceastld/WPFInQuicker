@@ -8,24 +8,22 @@
     Title="MainWindow"
     Width="800"
     Height="450"
-    SizeToContent="WidthAndHeight"
     Topmost="True"
+    WindowStartupLocation="CenterScreen"
     mc:Ignorable="d">
-    <Grid Margin="10">
-        <DataGrid x:Name="dgSimple" FontSize="15">
-            <DataGrid.Style>
-                <Style TargetType="DataGrid" />
-            </DataGrid.Style>
-            <DataGrid.RowStyle>
-                <Style TargetType="DataGridRow">
-                    <Setter Property="Background" Value="White" />
-                    <Style.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#7984CBFF" />
-                        </Trigger>
-                    </Style.Triggers>
-                </Style>
-            </DataGrid.RowStyle>
-        </DataGrid>
+    <Grid>
+        <Popup
+            x:Name="ThePopUp"
+            Width="300"
+            Height="200"
+            Placement="Center">
+            <Border Background="Black">
+                <TextBlock
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    FontSize="30"
+                    Text="test popup" />
+            </Border>
+        </Popup>
     </Grid>
 </Window>

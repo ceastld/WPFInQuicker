@@ -11,46 +11,16 @@ namespace ConsoleApp2
 
         static void Main()
         {
-            AssemblyName myAssemblyName = new AssemblyName("TempAssembly");
-
-            // Define a dynamic assembly in the current application domain.
-            AssemblyBuilder myAssemblyBuilder =
-               AppDomain.CurrentDomain.DefineDynamicAssembly(
-                           myAssemblyName, AssemblyBuilderAccess.Run);
-
-            // Define a dynamic module in "TempAssembly" assembly.
-            ModuleBuilder myModuleBuilder =
-               myAssemblyBuilder.DefineDynamicModule("TempModule");
-
-            Type[] paramTypes = { typeof(int), typeof(string), typeof(string), typeof(int) };
-
-            // Define a PInvoke method.
-            MethodBuilder piMethodBuilder = myModuleBuilder.DefinePInvokeMethod(
-               "MessageBoxA",
-               "user32.dll",
-               MethodAttributes.Public | MethodAttributes.Static | MethodAttributes.PinvokeImpl,
-               CallingConventions.Standard,
-               typeof(int),
-               paramTypes,
-               CallingConvention.Winapi,
-               CharSet.Ansi);
-
-            // Add PreserveSig to the method implementation flags. NOTE: If this line
-            // is commented out, the return value will be zero when the method is
-            // invoked.
-            piMethodBuilder.SetImplementationFlags(
-               piMethodBuilder.GetMethodImplementationFlags() | MethodImplAttributes.PreserveSig);
-
-            // Create global methods.
-            myModuleBuilder.CreateGlobalFunctions();
-
-            // Arguments for calling the method.
-            Object[] arguments = { 0, "Hello World", "Title", MB_RETRYCANCEL };
-
-            MethodInfo pinvokeMethod = myModuleBuilder.GetMethod("MessageBoxA");
-            Console.WriteLine("Testing module-level PInvoke method created with DefinePInvokeMethod...");
-            Console.WriteLine("Message box returned: {0}",
-               pinvokeMethod.Invoke(null, arguments));
+            Console.WriteLine(A.aaa);
+            Console.ReadLine();
+        }
+        public class A
+        {
+            public static int aaa = 10;
+            static A()
+            {
+                Console.WriteLine(aaa);
+            }
         }
     }
 }
